@@ -1,15 +1,18 @@
 #include "Enemy.h"
-
-Enemy::Enemy(Sky* ownSky):Plane(ownSky)
+#include<Sky.h>
+#include<iostream>
+Enemy::Enemy(Sky* ownSky,int Score):Plane(ownSky)
 {
 
+    this->Score=Score;
     int *rendd=new int;
     this->setTexture(GTexture::ENEMY_NORMAL);
 
 
     this->setPosition((*rendd)%600,10);
+    delete rendd;
 
-    this->setSpeed(35);//设置敌机速度
+    this->setSpeed(5);//设置敌机速度
 
     //ctor
 }
@@ -20,33 +23,76 @@ Enemy::~Enemy()
 }
 
 void Enemy::moveRand(){
-    static int count=0;
 
-    srand((unsigned) time(NULL));
+    //   srand((int)time(NULL));
+      //  rand();
 
 
-    if(++count>=10){
-        int *ren=new int;
-        char direction;
+        if(num==1){
+            int *ren=new int;
 
-        switch(int((*ren)%3)){
 
-        case 0:
-            direction='S';
-            break;
-        case 1:
-            direction='A';
-             break;
-        case 2:
-            direction='D';
-            break;
+            switch((*ren)%5){
+
+            case 0:
+                direction='D';
+                break;
+            case 1:
+                direction='A';
+                 break;
+            case 2:
+                direction='S';
+                break;
+            case 3:
+                direction='S';
+                break;
+            case 4:
+                direction='S';
+                break;
+
+            }
+
+            this->move(direction);
+            num++;
+        }else{
+            num++;
+            this->move(direction);
+
+            if(num==50){
+                num=1;
+
+            }
+
 
         }
-        this->move(direction);
 
 
-        count = 0;
+
+
+
+
+
+
+
+
+}
+
+void Enemy::boomByState(int state){
+    if(state==2){
+        this->BOOM.play();
 
     }
+    sf::Sprite boomImg;
+    boomImg.setTexture(GTexture::ENEMY_BOOM1);
 
+    boomImg.setScale(state/5.0,state/5.0);
+    boomImg.setPosition(this->getPosition().x,this->getPosition().y);
+ //   boomImg.setPosition(this->getPosition().x+(this->getGlobalBounds().width/2.0),this->getPosition().y+(this->getGlobalBounds().height/2.0));
+  // std::cout<<this->getPosition().x<<"|"<<this->getPosition().y<<"|"<<(this->getPosition().x+(this->getGlobalBounds().width/2.0))<<"|"<<(this->getPosition().y+(this->getGlobalBounds().height/2.0))<<std::endl;
+
+    this->ownSky->window->draw(boomImg);
+
+}
+int Enemy::getScore(){
+    return this->Score;
 }

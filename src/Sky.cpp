@@ -3,10 +3,14 @@
 //#include<Bullet.h>
 #include<iostream>
 #include<Enemy.h>
+
 Sky::Sky(sf::RenderWindow *window)
 {
     this->window=window;
+    font.loadFromFile("C:\\Windows\\Fonts\\BAUHS93.TTF");
+     Score.setColor(sf::Color::Red);
     this->setTexture(this->texture);
+    this->Score.setFont(this->font);
     this->setScale(1.0*this->window->getSize().x/this->texture.getSize().x,1.0*this->window->getSize().y/this->texture.getSize().y);//实现背景SKY全屏
     //ctor
 }
@@ -22,28 +26,74 @@ void Sky::add(Player *Player){
 }
 
 void Sky::refresh(){
+
+
+
     this->window->clear();
     this->window->draw(*this);
     this->window->draw(*(this->player));
-    for(auto &enemy : this->planes){
-        enemy->moveRand();
+
+
+    auto enemy = this->planes.begin();
+    while(enemy!=(this->planes.end()))
+    {
+         auto temp=enemy;
+
+
         /*
             这里处理下敌机的边缘问题0.0我先写在这个方法里吧,懒
 
+            也是为了减少循环检查次数,把显示和判断写在一起
+
         */
 
+        if((*enemy)->state>=1&&(*enemy)->state<=4){
+            (*enemy)->boomByState(((*enemy)->state)++);
 
-        if(enemy->getPosition().x<0){
-            enemy->setPosition(580,enemy->getPosition().y);
-
-        }else if(enemy->getPosition().x>580){
-            enemy->setPosition(-5,enemy->getPosition().y);
+            break;
+        }else if((*enemy)->state==5){
+            delete *enemy;
+            enemy = (this->planes).erase(enemy);
+            break;
         }
 
+        (*enemy)->moveRand();
+        if((*enemy)->getPosition().x<0){
+            (*enemy)->setPosition(580,(*enemy)->getPosition().y);
+
+        }else if((*enemy)->getPosition().x>580){
+            (*enemy)->setPosition(-5,(*enemy)->getPosition().y);
+        }else if((*enemy)->getPosition().y>700){
+            delete *enemy;
+           enemy = (this->planes).erase(enemy);
+           break;
+        }
+
+          //这里是判断是否敌机中弹
+   //    int bre=0;//break双重循环用的标记
+        for(auto sprite = this->bullets.begin(); sprite!=(this->bullets.end());){
+                if((*enemy)->getGlobalBounds().intersects((*sprite)->getGlobalBounds())){
+                        (*enemy)->state=1;
+                        this->player->addScore((*enemy)->getScore());
 
 
+                        this->bullets.erase(sprite);//子弹消失
 
-        this->window->draw(*enemy);
+                   //     bre=1;//打开标记
+                        break;
+
+                }
+                sprite++;
+
+
+        }
+      //  if(bre==1){break;}//break两层循环用
+        this->window->draw(**enemy);
+
+
+        if(temp==enemy){enemy++;}//由于不懂怎么处理这个双重循环的enemy++问题,强行使用一个变量记录先前的取值,然后
+
+
 
     }
 
@@ -51,6 +101,10 @@ void Sky::refresh(){
 
         this->window->draw(*sprite);
     }
+    static char a[10];
+    itoa(this->player->getScore(),a,10);
+    Score.setString(a);
+    this->window->draw(Score);
 
 
 }
@@ -59,7 +113,10 @@ void Sky::addBullet(Bullet* bullet){
 }
 
 void Sky::moveBullet(){
+
+
     for(auto &bullet : this->bullets){
+
         bullet->move('s');
 
     }
@@ -72,7 +129,7 @@ void Sky::clearBullet(){
         if((*bullet)->getPosition().y<0){
 
             delete *bullet;
-           // this->bullets.erase(*bullet);
+
             bullet = (this->bullets).erase(bullet);
 
         }else{
@@ -88,8 +145,8 @@ void Sky::createEnemies(){
     static int count=0;
 
 
-    if(++count>=100){
-        Enemy* enemy = new Enemy(this);
+    if(++count>=20){
+        Enemy* enemy = new Enemy(this,10);
         this->planes.insert(enemy);
 
 

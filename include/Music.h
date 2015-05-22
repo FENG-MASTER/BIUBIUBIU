@@ -8,8 +8,9 @@ class Music
         Music();
         virtual ~Music();
 
-        static sf::Music MUSIC_BGM;//±³¾°ÒôÀÖ
-
+        static sf::Music MUSIC_BGM;//èƒŒæ™¯éŸ³ä¹
+        static sf::Music SOUND_BOOM;
+        static sf::Music SOUND_FIRE;
         static void load();
 
 

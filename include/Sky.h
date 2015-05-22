@@ -27,9 +27,15 @@ class Sky :public sf::Sprite
         bool enemyNeedToBeclear(Enemy *enemy);
 
 
+
+
+
+
     protected:
     private:
         sf::Texture texture=GTexture::SKY;//天空纹理
+        sf::Font font;//显示字体
+        sf::Text Score;
 
 
         unordered_set<Enemy * > planes;

@@ -13,7 +13,6 @@ Game::~Game()
 }
 void Game::start(){
     this->playMusic();
-
     while (sky->window->isOpen()){
 	// Process events
 
@@ -23,8 +22,9 @@ void Game::start(){
     sky->clearBullet();
 	while (sky->window->pollEvent(event)){
 		// Close window: exit
-		if (event.type == sf::Event::Closed)sky->window->close();
-	}
+		if (event.type == sf::Event::Closed)
+            sky->window->close();
+        }
 	// Left  pressed
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left) {
         //向左
@@ -45,8 +45,8 @@ void Game::start(){
         }
     }
 
-    if (event.type == sf::Event::KeyPressed  && event.key.code == sf::Keyboard::Up) {
-        //up发射子弹
+    if (event.type == sf::Event::KeyReleased  && event.key.code == sf::Keyboard::Space) {
+        //up发射子弹,自带连发
 
         this->sky->player->fire();
 

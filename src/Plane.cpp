@@ -41,3 +41,5 @@ void Plane::move(char direction){
 void Plane::setSpeed(int speed){
     this->speed=speed;
 }
+
+

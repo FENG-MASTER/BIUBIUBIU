@@ -1,15 +1,24 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 #include<Plane.h>
-
+#include <SFML/Audio.hpp>
+#include<Music.h>
 class Enemy :public Plane
 {
     public:
-        Enemy(Sky* ownSky);
+        Enemy(Sky* ownSky,int Score);
         virtual ~Enemy();
-        void moveRand(); //µĞÈËËæ»úÒÆ¶¯º¯Êı
+        void moveRand(); //éšæœºç§»åŠ¨
+        int state=0;//æ•ŒæœºçŠ¶æ€ 0æ­£å¸¸ 1-4çˆ†ç‚¸ 5æ­»äº¡
+        void boomByState(int state);
+        int getScore();
+
     protected:
     private:
+        sf::Music &BOOM=Music::SOUND_BOOM;
+        int Score;
+        int num=1;
+        char direction;
 };
 
 #endif // ENEMY_H

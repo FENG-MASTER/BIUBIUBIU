@@ -18,7 +18,7 @@ sky.add(&BIU);
 window.setFramerateLimit(60);
 Game game(&sky);
 game.start();
-
+window.close();
 
 return EXIT_SUCCESS;
 }
