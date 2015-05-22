@@ -15,10 +15,12 @@ class Player :public Plane
         void addScore(int score);
         int getScore();
         void clearScore();
+
     protected:
     private:
         int score=0;
-        int fireSpeed=2;
+        int lifeTime=3;
+
         sf::Texture texture=GTexture::PLAYER_NORMAL;//Íæ¼Ò·É»úÎÆÀí
         sf::Music &FIRE=Music::SOUND_FIRE;
 

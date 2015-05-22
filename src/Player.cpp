@@ -26,8 +26,8 @@ void Player::fire(){
         Bullet *bulletR=new Bullet(GTexture::BULLET);
         bulletL->setPosition(this->getPosition().x,this->getPosition().y);
         bulletR->setPosition(this->getPosition().x+120,this->getPosition().y);
-        this->ownSky->addBullet(bulletL);
-        this->ownSky->addBullet(bulletR);
+        this->ownSky->addBullet(bulletL,1);
+        this->ownSky->addBullet(bulletR,1);
         i=0;
     }else{
         i++;
@@ -47,3 +47,4 @@ int Player::getScore(){
 void Player::clearScore(){
     this->score=0;
 }
+

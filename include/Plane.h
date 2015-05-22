@@ -10,24 +10,14 @@ class Plane:public sf::Sprite
         Plane(Sky* ownSky);
         virtual ~Plane();
         void setSpeed(int speed);
-
         virtual void fire();//开火
         void move(char direction);//移动函数 支持四个方向
 
-
-
-
-
-
-
     protected:
          Sky* ownSky;
+         int speed=5;
+         int fireSpeed=2;
     private:
-
-        int speed=5;
-
-
-
         sf::Texture texture;  //飞机纹理
 };
 

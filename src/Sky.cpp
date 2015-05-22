@@ -88,6 +88,8 @@ void Sky::refresh(){
 
         }
       //  if(bre==1){break;}//break两层循环用
+        this->enemyRandFire();
+
         this->window->draw(**enemy);
 
 
@@ -101,6 +103,12 @@ void Sky::refresh(){
 
         this->window->draw(*sprite);
     }
+
+
+    for(auto &sprite : this->enemyBullets){
+
+        this->window->draw(*sprite);
+    }
     static char a[10];
     itoa(this->player->getScore(),a,10);
     Score.setString(a);
@@ -108,17 +116,30 @@ void Sky::refresh(){
 
 
 }
-void Sky::addBullet(Bullet* bullet){
-    this->bullets.insert(bullet);
+void Sky::addBullet(Bullet* bullet,int flat){
+    switch (flat)
+    {
+        case 1:
+             this->bullets.insert(bullet);//添加子弹到玩家子弹
+             break;
+        case 2:
+
+             this->enemyBullets.insert(bullet);//添加子弹到敌人子弹
+             break;
+
+
+    }
+
 }
 
 void Sky::moveBullet(){
 
-
     for(auto &bullet : this->bullets){
-
         bullet->move('s');
+    }
+     for(auto &bullet : this->enemyBullets){
 
+        bullet->move('W');
     }
 
 }
@@ -144,21 +165,46 @@ void Sky::createEnemies(){
 
     static int count=0;
 
-
     if(++count>=20){
         Enemy* enemy = new Enemy(this,10);
         this->planes.insert(enemy);
-
-
         count = 0;
+    }
+}
+
+void Sky::enemyRandFire(){
+
+    for(auto enemy = this->planes.begin(); enemy!=(this->planes.end());){
+        (*enemy)->fireRand();
+        enemy++;
+    }
+
+}
+bool Sky::isEnd(){
+
+    for(auto &bullet : this->enemyBullets){
+
+        if((bullet)->getGlobalBounds().intersects((this->player)->getGlobalBounds())){
+               return true;
+
+        }
+
     }
 
 
+    for(auto &enemy : this->planes){
+
+        if((enemy)->getGlobalBounds().intersects((this->player)->getGlobalBounds())){
+               return true;
+
+        }
+
+    }
+
+    return false;
 
 }
-
-
-bool enemyNeedToBeclear(Enemy *enemy){
-
-
+void Sky::clearEnemyAndBullet(){
+    enemyBullets.clear();
+    planes.clear();
 }

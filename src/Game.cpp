@@ -61,7 +61,10 @@ void Game::start(){
 
 
    sky->refresh();
+    if(sky->isEnd()){
+        sky->clearEnemyAndBullet();
 
+    }
 
 	// Update the window
 	sky->window->display();

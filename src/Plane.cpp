@@ -17,7 +17,7 @@ void Plane::fire(){
 //发射
     Bullet *bullet=new Bullet(GTexture::BULLET);
     bullet->setPosition(this->getPosition().x+60,this->getPosition().y);
-    this->ownSky->addBullet(bullet);
+    this->ownSky->addBullet(bullet,1);
 
 
 

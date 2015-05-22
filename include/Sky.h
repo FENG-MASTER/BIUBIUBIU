@@ -19,13 +19,14 @@ class Sky :public sf::Sprite
 
         sf::RenderWindow *window;//天空的窗口
         Player *player;//玩家飞机
-        void addBullet(Bullet* bullet);//添加子弹到sky
+        void addBullet(Bullet* bullet,int flat);//添加子弹到sky
         void moveBullet();//子弹移动
         void clearBullet();//对界外子弹进行回收处理
         void createEnemies();//随机生成敌机
 
-        bool enemyNeedToBeclear(Enemy *enemy);
-
+        void enemyRandFire();
+        bool isEnd();
+        void clearEnemyAndBullet();
 
 
 
@@ -40,6 +41,7 @@ class Sky :public sf::Sprite
 
         unordered_set<Enemy * > planes;
         unordered_set<Bullet * > bullets;
+        unordered_set<Bullet * > enemyBullets;
 
 
 

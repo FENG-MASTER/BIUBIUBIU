@@ -1,11 +1,12 @@
 #include "Enemy.h"
 #include<Sky.h>
-#include<iostream>
+
 Enemy::Enemy(Sky* ownSky,int Score):Plane(ownSky)
 {
 
     this->Score=Score;
     int *rendd=new int;
+    this->fireSpeed=380;
     this->setTexture(GTexture::ENEMY_NORMAL);
 
 
@@ -95,4 +96,41 @@ void Enemy::boomByState(int state){
 }
 int Enemy::getScore(){
     return this->Score;
+}
+bool Enemy::fireRand(){
+    int flat;
+    int *rand=new int;
+    flat=(*rand)%100;
+    if(flat>0||flat<(100*this->rateOfFire)){
+        fire();
+
+
+    }else{
+
+
+    }
+
+
+
+
+
+}
+
+
+
+void Enemy::fire(){
+//发射
+
+static int i=0;
+    if(i>this->fireSpeed){
+        Bullet *bullet=new Bullet(GTexture::BULLET);
+        bullet->setSpeed(10);
+        bullet->setPosition(this->getPosition().x+20,this->getPosition().y);
+        this->ownSky->addBullet(bullet,2);
+        i=0;
+    }else{
+        i++;
+    }
+
+
 }
