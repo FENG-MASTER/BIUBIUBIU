@@ -15,6 +15,8 @@ class Player :public Plane
         void addScore(int score);
         int getScore();
         void clearScore();
+        int getLife();
+        bool dead();
 
     protected:
     private:
@@ -23,6 +25,7 @@ class Player :public Plane
 
         sf::Texture texture=GTexture::PLAYER_NORMAL;//Íæ¼Ò·É»úÎÆÀí
         sf::Music &FIRE=Music::SOUND_FIRE;
+
 
 };
 

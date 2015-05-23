@@ -1,9 +1,14 @@
 #include "Game.h"
 #include <SFML/Audio.hpp>
-
+#include<string.h>
+#include<iostream>
 Game::Game(Sky *sky)
 {
     this->sky=sky;
+    font.loadFromFile("C:\\Windows\\Fonts\\BAUHS93.TTF");
+     Score.setColor(sf::Color::Red);
+    this->Score.setFont(this->font);
+    this->lifeRemain=this->sky->player->getLife();
     //ctor
 }
 
@@ -22,9 +27,13 @@ void Game::start(){
     sky->clearBullet();
 	while (sky->window->pollEvent(event)){
 		// Close window: exit
-		if (event.type == sf::Event::Closed)
+		if (event.type == sf::Event::Closed){
             sky->window->close();
+            return ;
+
         }
+
+
 	// Left  pressed
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left) {
         //向左
@@ -45,7 +54,7 @@ void Game::start(){
         }
     }
 
-    if (event.type == sf::Event::KeyReleased  && event.key.code == sf::Keyboard::Space) {
+    if (event.type == sf::Event::KeyPressed  && event.key.code == sf::Keyboard::Space) {
         //up发射子弹,自带连发
 
         this->sky->player->fire();
@@ -54,17 +63,24 @@ void Game::start(){
 
     }
 
-
-
-
+    }
 	// Clear screen
 
 
    sky->refresh();
+
     if(sky->isEnd()){
+
+        if(sky->player->dead()){
+            std::cout<<"END";
+
+        }
+        sky->player->setPosition(200,680);
         sky->clearEnemyAndBullet();
 
     }
+
+    showInfo();
 
 	// Update the window
 	sky->window->display();
@@ -83,5 +99,12 @@ void Game::playMusic(){
 
 void Game::stopMusic(){
     this->BGM.stop();
+}
+void Game::showInfo(){
+    this->lifeRemain=this->sky->player->getLife();
+    char str[20];
+    sprintf(str,"Score:%d \n life:%d",this->sky->player->getScore(),lifeRemain);
+    Score.setString(str);
+    this->sky->window->draw(Score);
 }
 

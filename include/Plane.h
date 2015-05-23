@@ -2,6 +2,8 @@
 #define PLANE_H
 #include <SFML/Graphics.hpp>
 #include<GTexture.h>
+#include <SFML/Audio.hpp>
+#include<Music.h>
 //#include<Sky.h>
 class Sky;
 class Plane:public sf::Sprite
@@ -17,8 +19,11 @@ class Plane:public sf::Sprite
          Sky* ownSky;
          int speed=5;
          int fireSpeed=2;
-    private:
         sf::Texture texture;  //·É»úÎÆÀí
+        sf::Music &BOOM=Music::SOUND_BOOM; //·É»ú±¬Õ¨ÉùÒô
+        sf::Texture BOOMTEXTURE=GTexture::ENEMY_BOOM1;//·É»ú±¬Õ¨ÌùÍ¼
+    private:
+
 };
 
 #endif // PLANE_H

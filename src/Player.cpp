@@ -1,12 +1,15 @@
 #include "Player.h"
 #include<Bullet.h>
 #include<Sky.h>
+#include <SFML/System.hpp>
+
 Player::Player(Sky* ownSky):Plane(ownSky)
 {
     this->setTexture(this->texture);
     this->setScale(0.4,0.4);
     this->setPosition(200,680);
-    this->setSpeed(20);
+    this->setSpeed(30);
+
 
 
     //ctor
@@ -47,4 +50,24 @@ int Player::getScore(){
 void Player::clearScore(){
     this->score=0;
 }
+int Player::getLife(){
+    return lifeTime;
+}
 
+bool Player::dead(){
+    this->BOOM.play();
+    sf::Sprite boomImg;
+    boomImg.setTexture(BOOMTEXTURE);
+    BOOMTEXTURE.isRepeated();
+
+    boomImg.setPosition(this->getPosition().x,this->getPosition().y);
+
+    ownSky->window->draw(boomImg);
+
+    ownSky->window->display();
+    sf::Time s = sf::seconds(1);
+    sf::sleep(s);
+    lifeTime--;
+    return lifeTime==0;
+
+}

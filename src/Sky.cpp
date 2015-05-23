@@ -7,10 +7,9 @@
 Sky::Sky(sf::RenderWindow *window)
 {
     this->window=window;
-    font.loadFromFile("C:\\Windows\\Fonts\\BAUHS93.TTF");
-     Score.setColor(sf::Color::Red);
+
     this->setTexture(this->texture);
-    this->Score.setFont(this->font);
+
     this->setScale(1.0*this->window->getSize().x/this->texture.getSize().x,1.0*this->window->getSize().y/this->texture.getSize().y);//ÊµÏÖ±³¾°SKYÈ«ÆÁ
     //ctor
 }
@@ -109,10 +108,7 @@ void Sky::refresh(){
 
         this->window->draw(*sprite);
     }
-    static char a[10];
-    itoa(this->player->getScore(),a,10);
-    Score.setString(a);
-    this->window->draw(Score);
+
 
 
 }
@@ -165,7 +161,7 @@ void Sky::createEnemies(){
 
     static int count=0;
 
-    if(++count>=20){
+    if(++count>=200){
         Enemy* enemy = new Enemy(this,10);
         this->planes.insert(enemy);
         count = 0;
@@ -181,24 +177,16 @@ void Sky::enemyRandFire(){
 
 }
 bool Sky::isEnd(){
-
     for(auto &bullet : this->enemyBullets){
-
         if((bullet)->getGlobalBounds().intersects((this->player)->getGlobalBounds())){
                return true;
-
         }
 
     }
-
-
     for(auto &enemy : this->planes){
-
         if((enemy)->getGlobalBounds().intersects((this->player)->getGlobalBounds())){
                return true;
-
         }
-
     }
 
     return false;

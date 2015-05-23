@@ -33,6 +33,9 @@ void Plane::move(char direction){
     }else if(direction=='S'||direction=='s'){
         this->setPosition(this->getPosition().x,this->getPosition().y+this->speed);
 
+    }else if(direction=='W'||direction=='w'){
+        this->setPosition(this->getPosition().x,this->getPosition().y-this->speed);
+
     }
 
 

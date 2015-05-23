@@ -10,6 +10,7 @@ class Game
         virtual ~Game();
         void start();
         void pause();
+        void showInfo();
 
 
     protected:
@@ -17,6 +18,9 @@ class Game
         void playMusic();
         void stopMusic();
         sf::Music &BGM=Music::MUSIC_BGM;//游戏BGM
+        sf::Font font;//显示字体
+        sf::Text Score;
+        int lifeRemain;
 
         Sky* sky;
 

@@ -84,7 +84,7 @@ void Enemy::boomByState(int state){
 
     }
     sf::Sprite boomImg;
-    boomImg.setTexture(GTexture::ENEMY_BOOM1);
+    boomImg.setTexture(BOOMTEXTURE);
 
     boomImg.setScale(state/5.0,state/5.0);
     boomImg.setPosition(this->getPosition().x,this->getPosition().y);
