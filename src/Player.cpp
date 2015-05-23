@@ -8,7 +8,7 @@ Player::Player(Sky* ownSky):Plane(ownSky)
     this->setTexture(this->texture);
     this->setScale(0.4,0.4);
     this->setPosition(200,680);
-    this->setSpeed(30);
+    this->setSpeed(20);
 
 
 
@@ -58,16 +58,20 @@ bool Player::dead(){
     this->BOOM.play();
     sf::Sprite boomImg;
     boomImg.setTexture(BOOMTEXTURE);
-    BOOMTEXTURE.isRepeated();
-
     boomImg.setPosition(this->getPosition().x,this->getPosition().y);
-
     ownSky->window->draw(boomImg);
-
     ownSky->window->display();
+
     sf::Time s = sf::seconds(1);
     sf::sleep(s);
     lifeTime--;
     return lifeTime==0;
+
+}
+void Player::init(){
+    this->score=0;
+    this->lifeTime=3;
+    this->setPosition(200,680);
+    this->setSpeed(20);
 
 }

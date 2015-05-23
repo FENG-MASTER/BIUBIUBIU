@@ -17,6 +17,7 @@ class Player :public Plane
         void clearScore();
         int getLife();
         bool dead();
+        void init();
 
     protected:
     private:

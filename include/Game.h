@@ -3,6 +3,7 @@
 #include <SFML/Audio.hpp>
 #include<Sky.h>
 #include<Music.h>
+
 class Game
 {
     public:
@@ -11,6 +12,8 @@ class Game
         void start();
         void pause();
         void showInfo();
+        void showGameOver();
+        void init();
 
 
     protected:
@@ -18,9 +21,12 @@ class Game
         void playMusic();
         void stopMusic();
         sf::Music &BGM=Music::MUSIC_BGM;//游戏BGM
-        sf::Font font;//显示字体
         sf::Text Score;
+        sf::Text GameOver_Text;
         int lifeRemain;
+        int gameOverFlat=0;
+        int waitingForReset=0;
+
 
         Sky* sky;
 

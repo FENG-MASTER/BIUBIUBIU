@@ -161,7 +161,7 @@ void Sky::createEnemies(){
 
     static int count=0;
 
-    if(++count>=200){
+    if(++count>=20){
         Enemy* enemy = new Enemy(this,10);
         this->planes.insert(enemy);
         count = 0;
