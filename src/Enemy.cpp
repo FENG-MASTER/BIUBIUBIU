@@ -1,19 +1,21 @@
 #include "Enemy.h"
 #include<Sky.h>
-
+#include<iostream>
+#define INIT_SPEED 2
+#define INIT_FIRERATE 60
 Enemy::Enemy(Sky* ownSky,int Score):Plane(ownSky)
 {
 
     this->Score=Score;
     int *rendd=new int;
-    this->fireSpeed=380;
+    this->fireRate=INIT_FIRERATE;
     this->setTexture(GTexture::ENEMY_NORMAL);
-
+    this->setFireSpeed(10);
 
     this->setPosition((*rendd)%600,10);
     delete rendd;
-
-    this->setSpeed(5);//设置敌机速度
+    _num =new int;
+    this->setSpeed(INIT_SPEED);//设置敌机速度
 
     //ctor
 }
@@ -25,8 +27,7 @@ Enemy::~Enemy()
 
 void Enemy::moveRand(){
 
-    //   srand((int)time(NULL));
-      //  rand();
+
 
 
         if(num==1){
@@ -59,27 +60,22 @@ void Enemy::moveRand(){
             num++;
             this->move(direction);
 
-            if(num==50){
+            if(num==((*_num)%50)){
+                _num =new int;
                 num=1;
 
             }
 
 
+
         }
-
-
-
-
-
-
-
-
 
 
 }
 
 void Enemy::boomByState(int state){
     if(state==2){
+
         this->BOOM.play();
 
     }
@@ -88,8 +84,6 @@ void Enemy::boomByState(int state){
 
     boomImg.setScale(state/5.0,state/5.0);
     boomImg.setPosition(this->getPosition().x,this->getPosition().y);
- //   boomImg.setPosition(this->getPosition().x+(this->getGlobalBounds().width/2.0),this->getPosition().y+(this->getGlobalBounds().height/2.0));
-  // std::cout<<this->getPosition().x<<"|"<<this->getPosition().y<<"|"<<(this->getPosition().x+(this->getGlobalBounds().width/2.0))<<"|"<<(this->getPosition().y+(this->getGlobalBounds().height/2.0))<<std::endl;
 
     this->ownSky->window->draw(boomImg);
 
@@ -101,7 +95,8 @@ bool Enemy::fireRand(){
     int flat;
     int *rand=new int;
     flat=(*rand)%100;
-    if(flat>0||flat<(100*this->rateOfFire)){
+
+    if((flat>0)&&(flat<(100*this->rateOfFire))){
         fire();
 
 
@@ -112,25 +107,29 @@ bool Enemy::fireRand(){
 
 
 
-
-
 }
 
 
 
 void Enemy::fire(){
 //发射
+    static int i=0;
 
-static int i=0;
-    if(i>this->fireSpeed){
+
+    if(i>this->fireRate){
         Bullet *bullet=new Bullet(GTexture::BULLET);
-        bullet->setSpeed(10);
+        bullet->setSpeed(this->fireSpeed);
         bullet->setPosition(this->getPosition().x+20,this->getPosition().y);
         this->ownSky->addBullet(bullet,2);
         i=0;
     }else{
         i++;
     }
+
+
+}
+void Enemy::setFireRate(double rate){
+    this->rateOfFire=rate;
 
 
 }

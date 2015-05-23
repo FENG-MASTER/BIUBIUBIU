@@ -10,14 +10,16 @@ class Game
         Game(Sky *sky);
         virtual ~Game();
         void start();
-        void pause();
+
         void showInfo();
         void showGameOver();
         void init();
+        void cheakNextMission();
 
 
     protected:
     private:
+        int MissionOfNow=0;
         void playMusic();
         void stopMusic();
         sf::Music &BGM=Music::MUSIC_BGM;//游戏BGM

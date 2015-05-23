@@ -2,14 +2,16 @@
 #include<Bullet.h>
 #include<Sky.h>
 #include <SFML/System.hpp>
-
+#define INIT_SPEED 40
+#define INIT_X 200
+#define INIT_Y 680
 Player::Player(Sky* ownSky):Plane(ownSky)
 {
     this->setTexture(this->texture);
     this->setScale(0.4,0.4);
-    this->setPosition(200,680);
-    this->setSpeed(20);
-
+    this->setPosition(INIT_X,INIT_Y);
+    this->setSpeed(INIT_SPEED);
+    this->setFireSpeed(15);
 
 
     //ctor
@@ -23,10 +25,12 @@ void Player::fire(){
 //·¢Éä
 
     static int i=0;
-    if(i>this->fireSpeed){
+    if(i>this->fireDensity){
         FIRE.play();
         Bullet *bulletL=new Bullet(GTexture::BULLET);
         Bullet *bulletR=new Bullet(GTexture::BULLET);
+        bulletL->setSpeed(this->fireSpeed);
+        bulletR->setSpeed(this->fireSpeed);
         bulletL->setPosition(this->getPosition().x,this->getPosition().y);
         bulletR->setPosition(this->getPosition().x+120,this->getPosition().y);
         this->ownSky->addBullet(bulletL,1);
@@ -73,5 +77,13 @@ void Player::init(){
     this->lifeTime=3;
     this->setPosition(200,680);
     this->setSpeed(20);
+
+}
+void Player::addLife(int num){
+    this->lifeTime=this->lifeTime+num;
+
+}
+void Player::setfireDensity(int de){
+    this->fireDensity=de;
 
 }

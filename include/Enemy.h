@@ -14,14 +14,19 @@ class Enemy :public Plane
         int getScore();
         bool fireRand();
         void fire();
+        void setFireRate(double rate);
+
 
     protected:
     private:
 
+
+        int fireRate;
         int Score;
         int num=1;//这个变量简单说是用来处理敌机的运行状态的, 判断啊敌机是否达到换方向运动的变量
-        char direction;//敌机当前运动方向
-        int rateOfFire;
+        int *_num;
+        char direction;//敌机当前随机运动方向
+        double rateOfFire=0.5;//
 
 };
 

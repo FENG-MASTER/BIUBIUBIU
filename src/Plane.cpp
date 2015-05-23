@@ -16,6 +16,7 @@ Plane::~Plane()
 void Plane::fire(){
 //发射
     Bullet *bullet=new Bullet(GTexture::BULLET);
+    bullet->setSpeed(fireSpeed);
     bullet->setPosition(this->getPosition().x+60,this->getPosition().y);
     this->ownSky->addBullet(bullet,1);
 
@@ -44,5 +45,7 @@ void Plane::move(char direction){
 void Plane::setSpeed(int speed){
     this->speed=speed;
 }
-
+void Plane::setFireSpeed(int speed){
+    this->fireSpeed=speed;
+}
 

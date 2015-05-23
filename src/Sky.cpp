@@ -1,15 +1,12 @@
 #include "Sky.h"
 #include<Player.h>
-//#include<Bullet.h>
 #include<iostream>
 #include<Enemy.h>
 
 Sky::Sky(sf::RenderWindow *window)
 {
     this->window=window;
-
     this->setTexture(this->texture);
-
     this->setScale(1.0*this->window->getSize().x/this->texture.getSize().x,1.0*this->window->getSize().y/this->texture.getSize().y);//实现背景SKY全屏
     //ctor
 }
@@ -57,8 +54,8 @@ void Sky::refresh(){
         }
 
         (*enemy)->moveRand();
-        if((*enemy)->getPosition().x<0){
-            (*enemy)->setPosition(580,(*enemy)->getPosition().y);
+        if((*enemy)->getPosition().x<-6){
+            (*enemy)->setPosition(570,(*enemy)->getPosition().y);
 
         }else if((*enemy)->getPosition().x>580){
             (*enemy)->setPosition(-5,(*enemy)->getPosition().y);
@@ -69,7 +66,7 @@ void Sky::refresh(){
         }
 
           //这里是判断是否敌机中弹
-   //    int bre=0;//break双重循环用的标记
+
         for(auto sprite = this->bullets.begin(); sprite!=(this->bullets.end());){
                 if((*enemy)->getGlobalBounds().intersects((*sprite)->getGlobalBounds())){
                         (*enemy)->state=1;
@@ -78,7 +75,7 @@ void Sky::refresh(){
 
                         this->bullets.erase(sprite);//子弹消失
 
-                   //     bre=1;//打开标记
+
                         break;
 
                 }
@@ -86,8 +83,8 @@ void Sky::refresh(){
 
 
         }
-      //  if(bre==1){break;}//break两层循环用
-        this->enemyRandFire();
+
+
 
         this->window->draw(**enemy);
 
@@ -161,9 +158,13 @@ void Sky::createEnemies(){
 
     static int count=0;
 
-    if(++count>=20){
-        Enemy* enemy = new Enemy(this,10);
-        this->planes.insert(enemy);
+    if(++count>=createRate){
+        Enemy* enemy1 = new Enemy(this,10);
+        Enemy* enemy2 = new Enemy(this,10);
+        enemy1->setSpeed(enemySpeed);
+        enemy2->setSpeed(enemySpeed);
+        this->planes.insert(enemy1);
+        this->planes.insert(enemy2);
         count = 0;
     }
 }
@@ -171,6 +172,8 @@ void Sky::createEnemies(){
 void Sky::enemyRandFire(){
 
     for(auto enemy = this->planes.begin(); enemy!=(this->planes.end());){
+        (*enemy)->setFireRate(this->enemyFireRate);
+        (*enemy)->setFireSpeed(this->enemyBulletSpeed);
         (*enemy)->fireRand();
         enemy++;
     }
@@ -194,5 +197,22 @@ bool Sky::isEnd(){
 }
 void Sky::clearEnemyAndBullet(){
     enemyBullets.clear();
+    bullets.clear();
     planes.clear();
+}
+ void Sky::setEnemyCreateRate(int rate){
+    this->createRate=rate;
+
+ }
+void Sky::setEnemySpeed(int speed){
+    this->enemySpeed=speed;
+
+}
+void Sky::setEnemyFireRate(double rate){
+    this->enemyFireRate=rate;
+
+}
+void Sky::setEnemyBulletSpeed(int speed){
+    this->enemyBulletSpeed=speed;
+
 }
