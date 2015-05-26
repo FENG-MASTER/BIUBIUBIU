@@ -30,10 +30,15 @@ void Sky::refresh(){
     this->window->draw(*(this->player));
 
 
+
+  //  for()
     auto enemy = this->planes.begin();
+
     while(enemy!=(this->planes.end()))
     {
          auto temp=enemy;
+
+
 
 
         /*
@@ -58,7 +63,7 @@ void Sky::refresh(){
             (*enemy)->setPosition(570,(*enemy)->getPosition().y);
 
         }else if((*enemy)->getPosition().x>580){
-            (*enemy)->setPosition(-5,(*enemy)->getPosition().y);
+            (*enemy)->setPosition(-1,(*enemy)->getPosition().y);
         }else if((*enemy)->getPosition().y>700){
             delete *enemy;
            enemy = (this->planes).erase(enemy);
@@ -68,7 +73,7 @@ void Sky::refresh(){
           //这里是判断是否敌机中弹
 
         for(auto sprite = this->bullets.begin(); sprite!=(this->bullets.end());){
-                if((*enemy)->getGlobalBounds().intersects((*sprite)->getGlobalBounds())){
+                if((*enemy)->getGlobalBounds().intersects((*sprite)->getGlobalBounds())&&!((*enemy)->health-=10)){
                         (*enemy)->state=1;
                         this->player->addScore((*enemy)->getScore());
 
@@ -180,6 +185,7 @@ void Sky::enemyRandFire(){
 
 }
 bool Sky::isEnd(){
+
     for(auto &bullet : this->enemyBullets){
         if((bullet)->getGlobalBounds().intersects((this->player)->getGlobalBounds())){
                return true;

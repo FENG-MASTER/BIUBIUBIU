@@ -27,10 +27,12 @@ void Player::fire(){
     static int i=0;
     if(i>this->fireDensity){
         FIRE.play();
-        Bullet *bulletL=new Bullet(GTexture::BULLET);
-        Bullet *bulletR=new Bullet(GTexture::BULLET);
+        Bullet *bulletL=new Bullet(GTexture::BULLET2);
+        Bullet *bulletR=new Bullet(GTexture::BULLET2);
         bulletL->setSpeed(this->fireSpeed);
         bulletR->setSpeed(this->fireSpeed);
+        bulletL->setScale(0.5,0.5);
+        bulletR->setScale(0.5,0.5);
         bulletL->setPosition(this->getPosition().x,this->getPosition().y);
         bulletR->setPosition(this->getPosition().x+120,this->getPosition().y);
         this->ownSky->addBullet(bulletL,1);

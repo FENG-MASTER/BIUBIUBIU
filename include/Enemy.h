@@ -15,6 +15,7 @@ class Enemy :public Plane
         bool fireRand();
         void fire();
         void setFireRate(double rate);
+        int health;
 
 
     protected:

@@ -11,8 +11,9 @@ Enemy::Enemy(Sky* ownSky,int Score):Plane(ownSky)
     this->fireRate=INIT_FIRERATE;
     this->setTexture(GTexture::ENEMY_NORMAL);
     this->setFireSpeed(10);
+    this->health=Score*10;
 
-    this->setPosition((*rendd)%600,10);
+    this->setPosition((*rendd)%560,10);
     delete rendd;
     _num =new int;
     this->setSpeed(INIT_SPEED);//设置敌机速度
