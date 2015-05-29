@@ -49,3 +49,7 @@ void Plane::setFireSpeed(int speed){
     this->fireSpeed=speed;
 }
 
+int Plane::getSpeed(){
+    return this->speed;
+}
+

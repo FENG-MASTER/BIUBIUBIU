@@ -56,9 +56,7 @@ int Player::getScore(){
 void Player::clearScore(){
     this->score=0;
 }
-int Player::getLife(){
-    return lifeTime;
-}
+
 
 bool Player::dead(){
     this->BOOM.play();

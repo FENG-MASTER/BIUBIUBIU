@@ -15,7 +15,7 @@ Game::Game(Sky *sky)
     GameOver_Text.setFont(Font::Font_DEAD);
     GameOver_Text.setScale(1.2,1.2);
     GameOver_Text.setPosition(this->sky->getGlobalBounds().height/10.0,this->sky->getGlobalBounds().height/3.0);
-    this->lifeRemain=this->sky->player->getLife();
+    this->lifeRemain=this->sky->player->lifeTime;
 
     //ctor
 }
@@ -116,10 +116,7 @@ void Game::start(){
                 waitingForReset=1;
                 continue;
         }else if(gameOverFlat==0){
-
-
                cheakNextMission();
-
                 if(sky->isEnd()){
 
                     sky->player->isFiring=false;
@@ -128,7 +125,6 @@ void Game::start(){
                         stopMusic();
                         sky->player->setPosition(START_X,START_Y);
                         sky->clearEnemyAndBullet();
-
                         sky->window->clear();
                         continue;
                     }
@@ -138,10 +134,11 @@ void Game::start(){
 
                 }
 
-                 sky->createEnemies();//随机生成敌机
+                sky->createEnemies();//随机生成敌机
                 sky->enemyRandFire();
                 sky->moveBullet();//移动所有子弹
                 sky->clearBullet();//子弹边界处理
+                sky->itemMoveAndCheak();
                 sky->refresh();//刷新显示
 
                 showInfo();//显示当前分数信息
@@ -164,7 +161,7 @@ void Game::stopMusic(){
     this->BGM.stop();
 }
 void Game::showInfo(){
-    this->lifeRemain=this->sky->player->getLife();
+    this->lifeRemain=this->sky->player->lifeTime;
     char str[80];
     sprintf(str,"Mission:%d \nScore:%d \n life:%d",this->MissionOfNow,this->sky->player->getScore(),lifeRemain);
     Score.setString(str);

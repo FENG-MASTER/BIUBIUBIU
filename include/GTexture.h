@@ -24,6 +24,7 @@ class GTexture
 
         static sf::Texture BULLET;
         static sf::Texture BULLET2;
+        static sf::Texture ITEM_HEALTH;
 
         static sf::Texture SKY;
 

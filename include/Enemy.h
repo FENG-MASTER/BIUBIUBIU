@@ -2,6 +2,7 @@
 #define ENEMY_H
 #include<Plane.h>
 #include <SFML/Audio.hpp>
+
 #include<Music.h>
 class Enemy :public Plane
 {
@@ -20,6 +21,7 @@ class Enemy :public Plane
 
     protected:
     private:
+
 
 
         int fireRate;

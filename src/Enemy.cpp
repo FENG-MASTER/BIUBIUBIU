@@ -18,6 +18,8 @@ Enemy::Enemy(Sky* ownSky,int Score):Plane(ownSky)
     _num =new int;
     this->setSpeed(INIT_SPEED);//设置敌机速度
 
+
+
     //ctor
 }
 
@@ -29,6 +31,8 @@ Enemy::~Enemy()
 void Enemy::moveRand(){
 
 
+
+        if((*_num)<0){(*_num)=-(*_num);}//这里必须为正数,否则会出现飞机不懂的现象
 
 
         if(num==1){
@@ -61,7 +65,7 @@ void Enemy::moveRand(){
             num++;
             this->move(direction);
 
-            if(num==((*_num)%50)){
+            if(num>=((*_num)%100)){
                 _num =new int;
                 num=1;
 
@@ -70,6 +74,13 @@ void Enemy::moveRand(){
 
 
         }
+
+
+
+
+
+
+
 
 
 }

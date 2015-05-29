@@ -12,6 +12,7 @@ class Plane:public sf::Sprite
         Plane(Sky* ownSky);
         virtual ~Plane();
         void setSpeed(int speed);
+        int getSpeed();
         void setFireSpeed(int speed);
         virtual void fire();//开火
         void move(char direction);//移动函数 支持四个方向

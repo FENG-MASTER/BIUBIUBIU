@@ -31,11 +31,12 @@ void Sky::refresh(){
 
 
 
-  //  for()
-    auto enemy = this->planes.begin();
 
-    while(enemy!=(this->planes.end()))
+
+
+    for(auto enemy = this->planes.begin();enemy!=(this->planes.end());)
     {
+
          auto temp=enemy;
 
 
@@ -70,12 +71,21 @@ void Sky::refresh(){
            break;
         }
 
+
+
+
+
+
+
+
+
           //这里是判断是否敌机中弹
 
         for(auto sprite = this->bullets.begin(); sprite!=(this->bullets.end());){
-                if((*enemy)->getGlobalBounds().intersects((*sprite)->getGlobalBounds())&&!((*enemy)->health-=10)){
+                if((*enemy)->getGlobalBounds().intersects((*sprite)->getGlobalBounds())&&!((*enemy)->health-=10)){//这里有个魔数.写完道具后修改,这个是攻击力
                         (*enemy)->state=1;
                         this->player->addScore((*enemy)->getScore());
+                        createItems((*enemy)->getPosition().x,(*enemy)->getPosition().y);
 
 
                         this->bullets.erase(sprite);//子弹消失
@@ -94,7 +104,9 @@ void Sky::refresh(){
         this->window->draw(**enemy);
 
 
-        if(temp==enemy){enemy++;}//由于不懂怎么处理这个双重循环的enemy++问题,强行使用一个变量记录先前的取值,然后
+
+
+        if(temp==enemy){++enemy;}//由于不懂怎么处理这个双重循环的enemy++问题,强行使用一个变量记录先前的取值,然后
 
 
 
@@ -110,6 +122,12 @@ void Sky::refresh(){
 
         this->window->draw(*sprite);
     }
+
+    for(auto &item : this->items){
+
+        this->window->draw(*item);
+    }
+
 
 
 
@@ -185,7 +203,7 @@ void Sky::enemyRandFire(){
 
 }
 bool Sky::isEnd(){
-
+ return false;//测试开启无敌模式
     for(auto &bullet : this->enemyBullets){
         if((bullet)->getGlobalBounds().intersects((this->player)->getGlobalBounds())){
                return true;
@@ -201,7 +219,78 @@ bool Sky::isEnd(){
     return false;
 
 }
+
+void Sky::createItems(int x,int y){
+    int *flat=new int;
+
+    if(((*flat)%8)==1||((*flat)%8)==2){
+
+        Item *item=new Item(x,y);
+        items.insert(item);
+
+    }
+
+    delete flat;
+
+}
+
+
+
+
+
+void Sky::itemMoveAndCheak(){
+
+    for(auto &item : this->items){
+        item->moveRand();
+        if(item->getGlobalBounds().intersects(this->player->getGlobalBounds())){
+            //吃到道具
+            auto _items=item->getFuncs();
+            for(auto it=_items.begin();it!=_items.end();it++){
+                    if(it->first=="life"){
+                        this->player->lifeTime+=it->second;
+
+                    }else if(it->first=="speed"){
+                        this->player->setSpeed(this->player->getSpeed()+it->second);
+
+
+                    }
+
+
+
+            }
+
+            delete item;
+            this->items.erase(item);
+            break;
+
+        }
+            //处理物品边界问题
+
+        if(item->getPosition().x>580){
+                item->setPosition(5,item->getPosition().y);
+
+        }else if(item->getPosition().x<0){
+                item->setPosition(570,item->getPosition().y);
+        }
+
+    }
+}
+
+
 void Sky::clearEnemyAndBullet(){
+
+    for(auto &bullet : this->enemyBullets){
+        delete bullet;
+
+    }
+    for(auto &enemy : this->planes){
+        delete enemy;
+    }
+
+
+
+
+
     enemyBullets.clear();
     bullets.clear();
     planes.clear();

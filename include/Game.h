@@ -11,14 +11,16 @@ class Game
         virtual ~Game();
         void start();
 
-        void showInfo();
-        void showGameOver();
+
         void init();
-        void cheakNextMission();
+
 
 
     protected:
     private:
+        void showInfo();
+        void showGameOver();
+        void cheakNextMission();
         int MissionOfNow=0;
         void playMusic();
         void stopMusic();

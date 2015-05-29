@@ -6,6 +6,7 @@
 #include"Player.h"
 #include"Bullet.h"
 #include<Enemy.h>
+#include<Item.h>
 class Player;
 using namespace std;
 
@@ -32,6 +33,9 @@ class Sky :public sf::Sprite
         void setEnemyFireRate(double rate);
         void setEnemyBulletSpeed(int speed);
 
+        void createItems(int x,int y);
+        void itemMoveAndCheak();
+
 
 
 
@@ -49,6 +53,7 @@ class Sky :public sf::Sprite
         unordered_set<Enemy * > planes;
         unordered_set<Bullet * > bullets;
         unordered_set<Bullet * > enemyBullets;
+        unordered_set<Item * > items;
 
 
 

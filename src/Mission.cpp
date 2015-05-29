@@ -20,7 +20,7 @@ void Mission::load(){
     listOfMission[4]={550,2,16,15,20,90,5,1,10};
     listOfMission[5]={650,3,17,16,18,85,7,2,12};
     listOfMission[6]={800,3,18,19,15,81,9,2,15};
-    listOfMission[7]={1000,4,19,20,12,80,12,2,19};
+    listOfMission[7]={1000,4,19,20,12,80,12,2,16};
 
 
 
