@@ -81,8 +81,10 @@ void Sky::refresh(){
 
           //这里是判断是否敌机中弹
 
+
+
         for(auto sprite = this->bullets.begin(); sprite!=(this->bullets.end());){
-                if((*enemy)->getGlobalBounds().intersects((*sprite)->getGlobalBounds())&&!((*enemy)->health-=10)){//这里有个魔数.写完道具后修改,这个是攻击力
+                if((*enemy)->getGlobalBounds().intersects((*sprite)->getGlobalBounds())&&(((*enemy)->health-=(*sprite)->ATK)<0)){
                         (*enemy)->state=1;
                         this->player->addScore((*enemy)->getScore());
                         createItems((*enemy)->getPosition().x,(*enemy)->getPosition().y);
@@ -151,11 +153,11 @@ void Sky::addBullet(Bullet* bullet,int flat){
 void Sky::moveBullet(){
 
     for(auto &bullet : this->bullets){
-        bullet->move('s');
+        bullet->move('W');
     }
      for(auto &bullet : this->enemyBullets){
 
-        bullet->move('W');
+        bullet->move('S');
     }
 
 }
@@ -203,7 +205,11 @@ void Sky::enemyRandFire(){
 
 }
 bool Sky::isEnd(){
- return false;//测试开启无敌模式
+
+    if(loading){
+        return false;
+    }
+
     for(auto &bullet : this->enemyBullets){
         if((bullet)->getGlobalBounds().intersects((this->player)->getGlobalBounds())){
                return true;
@@ -221,16 +227,16 @@ bool Sky::isEnd(){
 }
 
 void Sky::createItems(int x,int y){
-    int *flat=new int;
+    srand(time(NULL));
 
-    if(((*flat)%8)==1||((*flat)%8)==2){
+    if((rand()%20)==1||(rand()%20)==2){
 
         Item *item=new Item(x,y);
         items.insert(item);
 
     }
 
-    delete flat;
+
 
 }
 
@@ -244,24 +250,21 @@ void Sky::itemMoveAndCheak(){
         item->moveRand();
         if(item->getGlobalBounds().intersects(this->player->getGlobalBounds())){
             //吃到道具
-            auto _items=item->getFuncs();
-            for(auto it=_items.begin();it!=_items.end();it++){
-                    if(it->first=="life"){
-                        this->player->lifeTime+=it->second;
 
-                    }else if(it->first=="speed"){
-                        this->player->setSpeed(this->player->getSpeed()+it->second);
+                if(item->getFlat==0){
+                    item->getSomething(this);
 
+                }
+
+                    if(item->showItemIcon()){
+                        delete item;
+                        this->items.erase(item);
+                        break;
 
                     }
 
 
 
-            }
-
-            delete item;
-            this->items.erase(item);
-            break;
 
         }
             //处理物品边界问题
@@ -273,11 +276,12 @@ void Sky::itemMoveAndCheak(){
                 item->setPosition(570,item->getPosition().y);
         }
 
+
     }
 }
 
 
-void Sky::clearEnemyAndBullet(){
+void Sky::clearEverything(){
 
     for(auto &bullet : this->enemyBullets){
         delete bullet;
@@ -285,6 +289,9 @@ void Sky::clearEnemyAndBullet(){
     }
     for(auto &enemy : this->planes){
         delete enemy;
+    }
+    for(auto &item : this->items){
+        delete item;
     }
 
 
@@ -294,6 +301,7 @@ void Sky::clearEnemyAndBullet(){
     enemyBullets.clear();
     bullets.clear();
     planes.clear();
+    items.clear();
 }
  void Sky::setEnemyCreateRate(int rate){
     this->createRate=rate;

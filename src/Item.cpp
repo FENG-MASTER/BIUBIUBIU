@@ -1,14 +1,34 @@
-#include "Item.h"
+#include "Item.h" itemsTexture=&GTexture::ITEM_HEALTH;
 #include<GTexture.h>
 #include<iostream>
+#include<math.h>
+#include<time.h>
+#include<windows.h>
+#include<GTexture.h>
+#include<Sky.h>
 Item::Item(int x,int y)
 {
     this->speed=1;
     this->setPosition(x,y);
-    items.insert(pair<string, int> ("life",1));
-    items.insert(pair<string, int> ("speed",1));
+
+    textureRand=&GTexture::ITEM_RAND;
+    itemsTexture=textureRand;
+
+
+    srand(time(NULL));
+    int i=abs(rand()%2);
+    if(i==0){
+        itemsTexture=&GTexture::ITEM_HEALTH;
+
+    }else if(i==1){
+        itemsTexture=&GTexture::ITEM_ATK;
+    }
+
+
+
+
     _num =new int;
-    this->setTexture(GTexture::ITEM_HEALTH);
+    this->setTexture(*textureRand);
 
 
 
@@ -19,29 +39,9 @@ Item::~Item()
 {
     //dtor
 }
-void Item::move(char direction){
-
-    if(direction=='A'||direction=='a'){
-        this->setPosition(this->getPosition().x-this->speed,this->getPosition().y);
-
-    }else if(direction=='D'||direction=='d'){
-        this->setPosition(this->getPosition().x+this->speed,this->getPosition().y);
-    }else if(direction=='S'||direction=='s'){
-        this->setPosition(this->getPosition().x,this->getPosition().y+this->speed);
-
-    }else if(direction=='W'||direction=='w'){
-        this->setPosition(this->getPosition().x,this->getPosition().y-this->speed);
-
-    }
 
 
-}
 
-map<string ,int > Item::getFuncs(){
-    return this->items;
-
-
-}
 
 
 void Item::moveRand(){
@@ -97,7 +97,33 @@ void Item::moveRand(){
 }
 
 
-void Item::setSpeed(int speed){
-    this->speed=speed;
+
+bool Item::showItemIcon(){
+    if(getFlat!=8){
+        this->setTexture(*itemsTexture);
+        getFlat++;
+        return false;
+
+    }else{
+        return true;
+
+
+    }
+
+
+}
+void Item::getSomething(Sky *sky){
+    if(this->itemsTexture==&GTexture::ITEM_HEALTH){
+            sky->player->lifeTime++;
+
+
+    }else if(itemsTexture==&GTexture::ITEM_ATK){
+            sky->player->ATK+=2;
+
+    }
+
+
+
+
 
 }

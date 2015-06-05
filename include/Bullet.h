@@ -2,14 +2,14 @@
 #define BULLET_H
 #include <SFML/Graphics.hpp>
 #include<GTexture.h>
-class Bullet:public sf::Sprite
+#include<flyingObject.h>
+class Bullet:public flyingObject
 {
     public:
-        Bullet(sf::Texture texture);
+        Bullet(sf::Texture texture,int ATK);
         virtual ~Bullet();
-        void setSpeed(int speed);
-        int getSpeed();
-        void move(char direction);//子弹移动,目前只有前进和后退
+
+        int ATK=10;
     protected:
     private:
         double speed=25.0;//初始子弹速度

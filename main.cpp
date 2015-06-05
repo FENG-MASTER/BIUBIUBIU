@@ -21,6 +21,7 @@ sf::RenderWindow window(sf::VideoMode(600, 800), "BIUBIU  enjoy yourself",sf::St
     sky.add(&BIU);
     window.setFramerateLimit(120);
     Game game(&sky);
+
     game.start();
 
 

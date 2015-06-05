@@ -5,17 +5,24 @@
 #define INIT_FIRERATE 60
 Enemy::Enemy(Sky* ownSky,int Score):Plane(ownSky)
 {
-
+    _num =new int;
     this->Score=Score;
     int *rendd=new int;
     this->fireRate=INIT_FIRERATE;
-    this->setTexture(GTexture::ENEMY_NORMAL);
+    if((*_num%3)==1){
+         this->setTexture(GTexture::ENEMY_2);
+
+    }else{
+
+     this->setTexture(GTexture::ENEMY_NORMAL);
+    }
+
     this->setFireSpeed(10);
     this->health=Score*10;
 
     this->setPosition((*rendd)%560,10);
     delete rendd;
-    _num =new int;
+
     this->setSpeed(INIT_SPEED);//设置敌机速度
 
 
@@ -129,7 +136,7 @@ void Enemy::fire(){
 
 
     if(i>this->fireRate){
-        Bullet *bullet=new Bullet(GTexture::BULLET);
+        Bullet *bullet=new Bullet(GTexture::BULLET,this->ATK);
         bullet->setSpeed(this->fireSpeed);
         bullet->setPosition(this->getPosition().x+20,this->getPosition().y);
         this->ownSky->addBullet(bullet,2);

@@ -18,15 +18,23 @@ class GTexture
 
         static sf::Texture ENEMY_NORMAL;
         static sf::Texture ENEMY_BOOM1;
-        static sf::Texture ENEMY_BOOM2;
-        static sf::Texture ENEMY_BOOM3;
+        static sf::Texture ENEMY_2;
 
 
         static sf::Texture BULLET;
         static sf::Texture BULLET2;
+
         static sf::Texture ITEM_HEALTH;
+        static sf::Texture ITEM_SPEED;
+        static sf::Texture ITEM_RAND;
+        static sf::Texture ITEM_ATK;
 
         static sf::Texture SKY;
+        static sf::Image ICO;
+
+
+        static sf::Texture LOADING;
+
 
         static void load();
     protected:

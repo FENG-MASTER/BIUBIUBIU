@@ -9,7 +9,13 @@ sf::Texture GTexture::BULLET;
 sf::Texture GTexture::BULLET2;
 sf::Texture GTexture::ENEMY_NORMAL;
 sf::Texture GTexture::ENEMY_BOOM1;
-sf::Texture  GTexture::ITEM_HEALTH;
+sf::Texture GTexture::ITEM_HEALTH;
+sf::Texture GTexture::ITEM_SPEED;
+sf::Texture GTexture::ITEM_RAND;
+sf::Texture GTexture::ITEM_ATK;
+sf::Texture GTexture::LOADING;
+sf::Texture GTexture::ENEMY_2;
+sf::Image GTexture::ICO;
 GTexture::GTexture()
 {
     //ctor
@@ -27,8 +33,12 @@ void GTexture::load(){
     ENEMY_BOOM1.loadFromFile("E:\\programmer\\BIUBIU\\res\\boom.png");
     BULLET2.loadFromFile("E:\\programmer\\BIUBIU\\res\\bullet.png",sf::IntRect(393,0,48,94));
     ITEM_HEALTH.loadFromFile("E:\\programmer\\BIUBIU\\res\\plane_1.png",sf::IntRect(395,750,55,55));
-
-
+    ITEM_SPEED.loadFromFile("E:\\programmer\\BIUBIU\\res\\plane_1.png",sf::IntRect(456,807,52,54));
+    ITEM_RAND.loadFromFile("E:\\programmer\\BIUBIU\\res\\item.png");
+    ITEM_ATK.loadFromFile("E:\\programmer\\BIUBIU\\res\\item_2.png");
+    LOADING.loadFromFile("E:\\programmer\\BIUBIU\\res\\LOADING.png");
+    ENEMY_2.loadFromFile("E:\\programmer\\BIUBIU\\res\\plane_2.png",sf::IntRect(276,473,103,74));
+    ICO.loadFromFile("E:\\programmer\\BIUBIU\\res\\ICO.png");
 
 
 }

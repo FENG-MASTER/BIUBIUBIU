@@ -1,0 +1,1908 @@
+
+(object Petal
+    version    	47
+    _written   	"Rose 8.2.0310.2800"
+    charSet    	134)
+
+(object Design "œ‘ æ¬ﬂº≠"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"5570F7FB00C4"
+    defaults   	(object defaults
+	rightMargin 	0.250000
+	leftMargin 	0.250000
+	topMargin  	0.250000
+	bottomMargin 	0.500000
+	pageOverlap 	0.250000
+	clipIconLabels 	TRUE
+	autoResize 	TRUE
+	snapToGrid 	TRUE
+	gridX      	0
+	gridY      	0
+	defaultFont 	(object Font
+	    size       	12
+	    face       	"ÀŒÃÂ"
+	    charSet    	134
+	    bold       	FALSE
+	    italics    	FALSE
+	    underline  	FALSE
+	    strike     	FALSE
+	    color      	3947580
+	    default_color 	TRUE)
+	showMessageNum 	3
+	showClassOfObject 	TRUE
+	notation   	"Unified")
+    root_usecase_package 	(object Class_Category "œ‘ æ”√¿˝"
+	quid       	"5570F7FB00C6"
+	exportControl 	"Public"
+	global     	TRUE
+	logical_models 	(list unit_reference_list)
+	logical_presentations 	(list unit_reference_list
+	    (object UseCaseDiagram "Main"
+		quid       	"5570F7FB0147"
+		title      	"Main"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    root_category 	(object Class_Category "œ‘ æ¬ﬂº≠"
+	quid       	"5570F7FB00C5"
+	exportControl 	"Public"
+	global     	TRUE
+	subsystem  	"œ‘ æ◊È≥…"
+	quidu      	"5570F7FB00C7"
+	logical_models 	(list unit_reference_list
+	    (object Class "Player"
+		quid       	"5570F8110196"
+		superclasses 	(list inheritance_relationship_list
+		    (object Inheritance_Relationship
+			quid       	"5570FF3802C9"
+			supplier   	"œ‘ æ¬ﬂº≠::Plane"
+			quidu      	"5570F8740269"))
+		used_nodes 	(list uses_relationship_list
+		    (object Uses_Relationship
+			quid       	"55710FFE01AD"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"))
+		operations 	(list Operations
+		    (object Operation "fire"
+			quid       	"5570FDD80215"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "addScore"
+			quid       	"5570FDDE023D"
+			parameters 	(list Parameters
+			    (object Parameter "score"
+				quid       	"5570FDE303C3"
+				type       	"Integer"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "getScore"
+			quid       	"5570FE160189"
+			result     	"Integer"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "clearScore"
+			quid       	"5570FE250373"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "dead"
+			quid       	"5570FE2C003F"
+			result     	"Boolean"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "init"
+			quid       	"5570FE3B002B"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setfireDensity"
+			quid       	"5570FE4200AD"
+			result     	"Integer"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "lifeTime"
+			quid       	"5570FE5101CF"
+			type       	"Integer"
+			exportControl 	"Public")
+		    (object ClassAttribute "ATK"
+			quid       	"5570FE5D0215"
+			type       	"Integer"
+			exportControl 	"Public")))
+	    (object Class "Game"
+		quid       	"5570F8580042"
+		operations 	(list Operations
+		    (object Operation "start"
+			quid       	"5570F9CF03C9"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "init"
+			quid       	"5570FA1D00F9"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)))
+	    (object Class "Sky"
+		quid       	"5570F8680060"
+		used_nodes 	(list uses_relationship_list
+		    (object Uses_Relationship
+			quid       	"55711003019D"
+			supplier   	"œ‘ æ¬ﬂº≠::Player"
+			quidu      	"5570F8110196")
+		    (object Uses_Relationship
+			quid       	"557110210336"
+			supplier   	"œ‘ æ¬ﬂº≠::Enemy"
+			quidu      	"5570F89D00F7"))
+		operations 	(list Operations
+		    (object Operation "add"
+			quid       	"5570FA5B0095"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "refresh"
+			quid       	"5570FA6D01DF"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "addBullet"
+			quid       	"5570FA7B00F9"
+			parameters 	(list Parameters
+			    (object Parameter "bullet"
+				quid       	"5570FABE009F"
+				type       	"Bullet"
+				quidu      	"5570F8A601FB")
+			    (object Parameter "flat"
+				quid       	"5570FAD10329"
+				type       	"Integer"))
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "moveBullet"
+			quid       	"5570FA81027F"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "clearBullet"
+			quid       	"5570FA8B0077"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "moveBullet"
+			quid       	"5570FB930358"
+			result     	"void"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "clearBullet"
+			quid       	"5570FBB20222"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "createEnemies"
+			quid       	"5570FBBF01B4"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "opname"
+			quid       	"5570FBC70006"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "enemyRandFire"
+			quid       	"5570FBCD001A"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "isEnd"
+			quid       	"5570FBD30312"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "clearEnemyAndBullet"
+			quid       	"5570FBDB02FE"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setEnemyCreateRate"
+			quid       	"557101F601C4"
+			parameters 	(list Parameters
+			    (object Parameter "rate"
+				quid       	"5571028902FB"
+				type       	"Integer"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setEnemySpeed"
+			quid       	"557102150192"
+			parameters 	(list Parameters
+			    (object Parameter "speed"
+				quid       	"5571029D02B5"
+				type       	"Integer"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setEnemyFireRate"
+			quid       	"5571021F0002"
+			parameters 	(list Parameters
+			    (object Parameter "rate"
+				quid       	"557102AF0017"
+				type       	"Double"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setEnemyBulletSpeed"
+			quid       	"55710260005D"
+			parameters 	(list Parameters
+			    (object Parameter "speed"
+				quid       	"557102C10251"
+				type       	"Integer"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "itemMoveAndCheak"
+			quid       	"557102720391"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)))
+	    (object Class "Plane"
+		quid       	"5570F8740269"
+		operations 	(list Operations
+		    (object Operation "setSpeed"
+			quid       	"5570FF660337"
+			parameters 	(list Parameters
+			    (object Parameter "speed"
+				quid       	"5570FF760170"
+				type       	"Integer"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "getSpeed"
+			quid       	"5570FFA00062"
+			result     	"Integer"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setFireSpeed"
+			quid       	"5570FFAD013E"
+			parameters 	(list Parameters
+			    (object Parameter "speed"
+				quid       	"5570FFB3013E"
+				type       	"Integer"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "fire"
+			quid       	"5570FFC5026A"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "move"
+			quid       	"5570FFF20170"
+			parameters 	(list Parameters
+			    (object Parameter "direction"
+				quid       	"5570FFFC013F"
+				type       	"char"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)))
+	    (object Class "Font"
+		quid       	"5570F87B03D1"
+		operations 	(list Operations
+		    (object Operation "load"
+			quid       	"557101B2032C"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "Font_Score"
+			quid       	"5571017F030E"
+			type       	"sf::Font"
+			exportControl 	"Public")
+		    (object ClassAttribute "Font_DEAD"
+			quid       	"5571018E025A"
+			type       	"sf::Font"
+			exportControl 	"Public")))
+	    (object Class "GTexture"
+		quid       	"5570F88502AF"
+		operations 	(list Operations
+		    (object Operation "load"
+			quid       	"5571039101A8"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)))
+	    (object Class "Music"
+		quid       	"5570F89002CD"
+		operations 	(list Operations
+		    (object Operation "load"
+			quid       	"557103BA000E"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "MUSIC_BGM"
+			quid       	"557103BF0130"
+			type       	"sf::Music"
+			exportControl 	"Public")
+		    (object ClassAttribute "SOUND_BOOM"
+			quid       	"557103C70108"
+			type       	"sf::Music"
+			exportControl 	"Public")
+		    (object ClassAttribute "SOUND_FIRE"
+			quid       	"557103CC01C6"
+			type       	"sf::Music"
+			exportControl 	"Public")))
+	    (object Class "Enemy"
+		quid       	"5570F89D00F7"
+		superclasses 	(list inheritance_relationship_list
+		    (object Inheritance_Relationship
+			quid       	"5570FF440301"
+			supplier   	"œ‘ æ¬ﬂº≠::Plane"
+			quidu      	"5570F8740269"))
+		operations 	(list Operations
+		    (object Operation "moveRand"
+			quid       	"5571003801D5"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "boomByState"
+			quid       	"557100420225"
+			parameters 	(list Parameters
+			    (object Parameter "state"
+				quid       	"5571004902CF"
+				type       	"Integer"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "getScore"
+			quid       	"5571005D0117"
+			result     	"Integer"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "fireRand"
+			quid       	"557100680167"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "fire"
+			quid       	"5571007E0315"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setFireRate"
+			quid       	"55710084022F"
+			parameters 	(list Parameters
+			    (object Parameter "rate"
+				quid       	"5571008D0045"
+				type       	"Double"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "health"
+			quid       	"5571009C0397"
+			type       	"Integer"
+			exportControl 	"Public")
+		    (object ClassAttribute "ATK"
+			quid       	"557100A601DF"
+			type       	"Integer"
+			exportControl 	"Public")))
+	    (object Class "Bullet"
+		quid       	"5570F8A601FB"
+		operations 	(list Operations
+		    (object Operation "setSpeed"
+			quid       	"5571044B0202"
+			parameters 	(list Parameters
+			    (object Parameter "speed"
+				quid       	"5571046D03D8"
+				type       	"Integer"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "getSpeed"
+			quid       	"557104500216"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "move"
+			quid       	"557104550338"
+			parameters 	(list Parameters
+			    (object Parameter "direction"
+				quid       	"5571047E0298"
+				type       	"char"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "ATK"
+			quid       	"5571045A01BC"
+			type       	"Integer"
+			exportControl 	"Public")))
+	    (object Class "Item"
+		quid       	"5570F8B703D1"
+		operations 	(list Operations
+		    (object Operation "move"
+			quid       	"557104EC00F8"
+			parameters 	(list Parameters
+			    (object Parameter "direction"
+				quid       	"5571050A0062"
+				type       	"char"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "moveRand"
+			quid       	"557104F10134"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setSpeed"
+			quid       	"557104F50102"
+			parameters 	(list Parameters
+			    (object Parameter "speed"
+				quid       	"5571051A017A"
+				type       	"Integer"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "showItemIcon"
+			quid       	"557104FB0008"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "getSomething"
+			quid       	"5571050000F8"
+			parameters 	(list Parameters
+			    (object Parameter "sky"
+				quid       	"557105320184"
+				type       	"Sky"
+				quidu      	"5570F8680060"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "itemsTexture"
+			quid       	"5571054C03D2"
+			type       	"sf::Texture *"
+			exportControl 	"Public")
+		    (object ClassAttribute "getFlat"
+			quid       	"5571056D035A"
+			type       	"Integer"
+			exportControl 	"Public")))
+	    (object Class "Mission"
+		quid       	"5570F8C6004D"
+		operations 	(list Operations
+		    (object Operation "load"
+			quid       	"557101570296"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "listOfMission[8]"
+			quid       	"557100F50077"
+			exportControl 	"Public")))
+	    (object UseCase "NewUseCase"
+		quid       	"55710FF200C1")
+	    (object Association "$UNNAMED$0"
+		quid       	"557106040310"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$1"
+			quid       	"5571060A0338"
+			supplier   	"œ‘ æ¬ﬂº≠::Bullet"
+			quidu      	"5570F8A601FB"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$2"
+			quid       	"5571060A033A"
+			supplier   	"œ‘ æ¬ﬂº≠::Player"
+			quidu      	"5570F8110196")))
+	    (object Association "$UNNAMED$3"
+		quid       	"55710622022A"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$4"
+			quid       	"557106230202"
+			supplier   	"œ‘ æ¬ﬂº≠::Bullet"
+			quidu      	"5570F8A601FB"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$5"
+			quid       	"55710623020C"
+			supplier   	"œ‘ æ¬ﬂº≠::Enemy"
+			quidu      	"5570F89D00F7")))
+	    (object Association "$UNNAMED$6"
+		quid       	"55710627022A"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$7"
+			quid       	"5571062A03BA"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$8"
+			quid       	"5571062A03C4"
+			supplier   	"œ‘ æ¬ﬂº≠::Game"
+			quidu      	"5570F8580042")))
+	    (object Association "$UNNAMED$9"
+		quid       	"557106580251"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$10"
+			quid       	"5571065902EC"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$11"
+			quid       	"5571065902F6"
+			supplier   	"œ‘ æ¬ﬂº≠::Player"
+			quidu      	"5570F8110196"
+			is_navigable 	TRUE)))
+	    (object Association "$UNNAMED$12"
+		quid       	"55710692000B"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$13"
+			quid       	"5571069301AF"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$14"
+			quid       	"5571069301B9"
+			supplier   	"œ‘ æ¬ﬂº≠::Enemy"
+			quidu      	"5570F89D00F7"
+			is_navigable 	TRUE)))
+	    (object Association "$UNNAMED$15"
+		quid       	"557106A903E3"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$16"
+			quid       	"557106AB01A9"
+			supplier   	"œ‘ æ¬ﬂº≠::Bullet"
+			quidu      	"5570F8A601FB"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$17"
+			quid       	"557106AB01AB"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060")))
+	    (object Association "$UNNAMED$18"
+		quid       	"557106E300DA"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$19"
+			quid       	"557106E40102"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$20"
+			quid       	"557106E4010C"
+			supplier   	"œ‘ æ¬ﬂº≠::Music"
+			quidu      	"5570F89002CD")))
+	    (object Association "$UNNAMED$21"
+		quid       	"557106E800BC"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$22"
+			quid       	"557106E80300"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$23"
+			quid       	"557106E8030A"
+			supplier   	"œ‘ æ¬ﬂº≠::Font"
+			quidu      	"5570F87B03D1")))
+	    (object Association "$UNNAMED$24"
+		quid       	"557106EB009E"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$25"
+			quid       	"557106EB0170"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$26"
+			quid       	"557106EB017A"
+			supplier   	"œ‘ æ¬ﬂº≠::Mission"
+			quidu      	"5570F8C6004D")))
+	    (object Association "$UNNAMED$27"
+		quid       	"557106FE0292"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$28"
+			quid       	"5571070000F8"
+			supplier   	"œ‘ æ¬ﬂº≠::Music"
+			quidu      	"5570F89002CD"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$29"
+			quid       	"5571070000FA"
+			supplier   	"œ‘ æ¬ﬂº≠::Enemy"
+			quidu      	"5570F89D00F7")))
+	    (object Association "$UNNAMED$30"
+		quid       	"557107040328"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$31"
+			quid       	"55710705003A"
+			supplier   	"œ‘ æ¬ﬂº≠::Enemy"
+			quidu      	"5570F89D00F7"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$32"
+			quid       	"557107050044"
+			supplier   	"œ‘ æ¬ﬂº≠::Music"
+			quidu      	"5570F89002CD")))
+	    (object Association "$UNNAMED$33"
+		quid       	"5571070602BA"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$34"
+			quid       	"557107070350"
+			supplier   	"œ‘ æ¬ﬂº≠::Player"
+			quidu      	"5570F8110196"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$35"
+			quid       	"557107070352"
+			supplier   	"œ‘ æ¬ﬂº≠::Music"
+			quidu      	"5570F89002CD")))
+	    (object Association "$UNNAMED$36"
+		quid       	"5571071A0102"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$37"
+			quid       	"5571071B0332"
+			supplier   	"œ‘ æ¬ﬂº≠::Enemy"
+			quidu      	"5570F89D00F7"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$38"
+			quid       	"5571071B033C"
+			supplier   	"œ‘ æ¬ﬂº≠::GTexture"
+			quidu      	"5570F88502AF")))
+	    (object Association "$UNNAMED$39"
+		quid       	"5571071D036E"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$40"
+			quid       	"5571071E021A"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$41"
+			quid       	"5571071E0224"
+			supplier   	"œ‘ æ¬ﬂº≠::GTexture"
+			quidu      	"5570F88502AF")))
+	    (object Association "$UNNAMED$42"
+		quid       	"5571072003B4"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$43"
+			quid       	"55710722006C"
+			supplier   	"œ‘ æ¬ﬂº≠::GTexture"
+			quidu      	"5570F88502AF"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$44"
+			quid       	"55710722006E"
+			supplier   	"œ‘ æ¬ﬂº≠::Player"
+			quidu      	"5570F8110196")))
+	    (object Association "$UNNAMED$45"
+		quid       	"557107230206"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$46"
+			quid       	"55710724030A"
+			supplier   	"œ‘ æ¬ﬂº≠::GTexture"
+			quidu      	"5570F88502AF"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$47"
+			quid       	"55710724030C"
+			supplier   	"œ‘ æ¬ﬂº≠::Bullet"
+			quidu      	"5570F8A601FB")))
+	    (object Association "$UNNAMED$48"
+		quid       	"557107B200EE"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$49"
+			quid       	"557107B300EE"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$50"
+			quid       	"557107B300F8"
+			supplier   	"œ‘ æ¬ﬂº≠::Item"
+			quidu      	"5570F8B703D1")))
+	    (object Association "$UNNAMED$51"
+		quid       	"5571085A028B"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$52"
+			quid       	"5571085B0029"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$53"
+			quid       	"5571085B0033"
+			supplier   	"œ‘ æ¬ﬂº≠::Bullet"
+			quidu      	"5570F8A601FB"
+			is_navigable 	TRUE)))
+	    (object Association "$UNNAMED$54"
+		quid       	"55710871013C"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$55"
+			quid       	"557108720312"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$56"
+			quid       	"557108720326"
+			supplier   	"œ‘ æ¬ﬂº≠::GTexture"
+			quidu      	"5570F88502AF")))
+	    (object Association "$UNNAMED$57"
+		quid       	"557108850268"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$58"
+			quid       	"557108850376"
+			supplier   	"œ‘ æ¬ﬂº≠::Player"
+			quidu      	"5570F8110196"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$59"
+			quid       	"557108850380"
+			supplier   	"œ‘ æ¬ﬂº≠::GTexture"
+			quidu      	"5570F88502AF"
+			is_navigable 	TRUE)))
+	    (object Association "$UNNAMED$60"
+		quid       	"5571088702D6"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$61"
+			quid       	"557108890182"
+			supplier   	"œ‘ æ¬ﬂº≠::Enemy"
+			quidu      	"5570F89D00F7"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$62"
+			quid       	"55710889018D"
+			supplier   	"œ‘ æ¬ﬂº≠::GTexture"
+			quidu      	"5570F88502AF"
+			is_navigable 	TRUE)))
+	    (object Association "$UNNAMED$63"
+		quid       	"5571088B0326"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$64"
+			quid       	"5571088C004C"
+			supplier   	"œ‘ æ¬ﬂº≠::Bullet"
+			quidu      	"5570F8A601FB"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$65"
+			quid       	"5571088C0056"
+			supplier   	"œ‘ æ¬ﬂº≠::GTexture"
+			quidu      	"5570F88502AF"
+			is_navigable 	TRUE)))
+	    (object Association "$UNNAMED$66"
+		quid       	"557110EB03DF"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$67"
+			quid       	"557110ED03C5"
+			supplier   	"œ‘ æ¬ﬂº≠::Player"
+			quidu      	"5570F8110196"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$68"
+			quid       	"557110ED03D3"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_aggregate 	TRUE)))
+	    (object Association "$UNNAMED$69"
+		quid       	"557110F500C2"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$70"
+			quid       	"557110F801A6"
+			supplier   	"œ‘ æ¬ﬂº≠::Enemy"
+			quidu      	"5570F89D00F7"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$71"
+			quid       	"557110F801B4"
+			supplier   	"œ‘ æ¬ﬂº≠::Sky"
+			quidu      	"5570F8680060"
+			is_aggregate 	TRUE))))
+	logical_presentations 	(list unit_reference_list
+	    (object ClassDiagram "Main"
+		quid       	"5570F7FB0150"
+		title      	"Main"
+		zoom       	85
+		max_height 	28350
+		max_width  	21600
+		origin_x   	162
+		origin_y   	0
+		items      	(list diagram_item_list
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::Plane" @1
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(564, 989)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@1
+			    location   	(346, 828)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	436
+			    justify    	0
+			    label      	"Plane")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F8740269"
+			compartment 	(object Compartment
+			    Parent_View 	@1
+			    location   	(346, 887)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	6
+			    max_width  	368)
+			width      	454
+			height     	346
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::Game" @2
+			ShowCompartmentStereotypes 	TRUE
+			IncludeOperation 	TRUE
+			location   	(3264, 1488)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@2
+			    location   	(3137, 1393)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	254
+			    justify    	0
+			    label      	"Game")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F8580042"
+			compartment 	(object Compartment
+			    Parent_View 	@2
+			    location   	(3137, 1452)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	3
+			    max_width  	213)
+			width      	272
+			height     	214
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::Mission" @3
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(3025, 2293)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@3
+			    location   	(2781, 2198)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	488
+			    justify    	0
+			    label      	"Mission")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F8C6004D"
+			compartment 	(object Compartment
+			    Parent_View 	@3
+			    location   	(2781, 2257)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	3
+			    max_width  	412)
+			width      	506
+			height     	214
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::Font" @4
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(2169, 1897)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@4
+			    location   	(1861, 1779)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	616
+			    justify    	0
+			    label      	"Font")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F87B03D1"
+			compartment 	(object Compartment
+			    Parent_View 	@4
+			    location   	(1861, 1838)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	4
+			    max_width  	522)
+			width      	634
+			height     	260
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::Item" @5
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(3833, 2231)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@5
+			    location   	(3435, 2025)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	796
+			    justify    	0
+			    label      	"Item")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F8B703D1"
+			compartment 	(object Compartment
+			    Parent_View 	@5
+			    location   	(3435, 2084)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	8
+			    max_width  	677)
+			width      	814
+			height     	436
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::Bullet" @6
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1180, 1055)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@6
+			    location   	(975, 916)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	410
+			    justify    	0
+			    label      	"Bullet")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F8A601FB"
+			compartment 	(object Compartment
+			    Parent_View 	@6
+			    location   	(975, 975)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	5
+			    max_width  	346)
+			width      	428
+			height     	302
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::Music" @7
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(500, 2340)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@7
+			    location   	(179, 2201)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	642
+			    justify    	0
+			    label      	"Music")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F89002CD"
+			compartment 	(object Compartment
+			    Parent_View 	@7
+			    location   	(179, 2260)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	5
+			    max_width  	544)
+			width      	660
+			height     	302
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::GTexture" @8
+			ShowCompartmentStereotypes 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1354, 377)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@8
+			    location   	(1214, 304)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	280
+			    justify    	0
+			    label      	"GTexture")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F88502AF"
+			compartment 	(object Compartment
+			    Parent_View 	@8
+			    location   	(1214, 363)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	2
+			    max_width  	191)
+			width      	298
+			height     	170
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$63" @9
+			location   	(1349, 683)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5571088B0326"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$64" @10
+				Parent_View 	@9
+				location   	(-19, 159)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5571088C004C"
+				client     	@9
+				supplier   	@6
+				line_style 	3
+				origin_attachment 	(1349, 683)
+				terminal_attachment 	(1349, 904))
+			    (object RoleView "$UNNAMED$65" @11
+				Parent_View 	@9
+				location   	(-19, 159)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5571088C0056"
+				client     	@9
+				supplier   	@8
+				line_style 	3
+				origin_attachment 	(1349, 683)
+				terminal_attachment 	(1349, 462))))
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::Player" @12
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(529, 279)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@12
+			    location   	(259, 30)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	540
+			    justify    	0
+			    label      	"Player")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F8110196"
+			compartment 	(object Compartment
+			    Parent_View 	@12
+			    location   	(259, 89)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	10
+			    max_width  	456)
+			width      	558
+			height     	522
+			annotation 	8
+			autoResize 	TRUE)
+		    (object InheritView "" @13
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5570FF3802C9"
+			client     	@12
+			supplier   	@1
+			line_style 	3
+			origin_attachment 	(463, 540)
+			terminal_attachment 	(463, 816))
+		    (object AssociationViewNew "$UNNAMED$33" @14
+			location   	(212, 1216)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5571070602BA"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$34" @15
+				Parent_View 	@14
+				location   	(-1779, -766)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557107070350"
+				client     	@14
+				supplier   	@12
+				vertices   	(list Points
+				    (212, 1216)
+				    (212, 281)
+				    (250, 281))
+				line_style 	3
+				origin_attachment 	(212, 1216)
+				terminal_attachment 	(250, 281))
+			    (object RoleView "$UNNAMED$35" @16
+				Parent_View 	@14
+				location   	(-1779, -766)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557107070352"
+				client     	@14
+				supplier   	@7
+				line_style 	3
+				origin_attachment 	(212, 1216)
+				terminal_attachment 	(212, 2189))))
+		    (object AssociationViewNew "$UNNAMED$57" @17
+			location   	(1006, 323)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"557108850268"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$58" @18
+				Parent_View 	@17
+				location   	(-362, -201)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557108850376"
+				client     	@17
+				supplier   	@12
+				line_style 	3
+				origin_attachment 	(1006, 323)
+				terminal_attachment 	(808, 323))
+			    (object RoleView "$UNNAMED$59" @19
+				Parent_View 	@17
+				location   	(-362, -201)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557108850380"
+				client     	@17
+				supplier   	@8
+				line_style 	3
+				origin_attachment 	(1006, 323)
+				terminal_attachment 	(1205, 323))))
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::Sky" @20
+			ShowCompartmentStereotypes 	TRUE
+			IncludeOperation 	TRUE
+			ShowOperationSignature 	TRUE
+			location   	(2628, 661)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@20
+			    location   	(1958, 236)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	1340
+			    justify    	0
+			    label      	"Sky")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F8680060"
+			compartment 	(object Compartment
+			    Parent_View 	@20
+			    location   	(1958, 295)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	18
+			    max_width  	1140)
+			width      	1358
+			height     	874
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$6" @21
+			location   	(3239, 1239)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"55710627022A"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$7" @22
+				Parent_View 	@21
+				location   	(184, 0)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5571062A03BA"
+				client     	@21
+				supplier   	@20
+				line_style 	3
+				origin_attachment 	(3239, 1239)
+				terminal_attachment 	(3239, 1098))
+			    (object RoleView "$UNNAMED$8" @23
+				Parent_View 	@21
+				location   	(184, 0)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5571062A03C4"
+				client     	@21
+				supplier   	@2
+				line_style 	3
+				origin_attachment 	(3239, 1239)
+				terminal_attachment 	(3239, 1380))))
+		    (object AssociationViewNew "$UNNAMED$21" @24
+			location   	(2265, 1432)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"557106E800BC"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$22" @25
+				Parent_View 	@24
+				location   	(440, -578)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557106E80300"
+				client     	@24
+				supplier   	@20
+				line_style 	3
+				origin_attachment 	(2265, 1432)
+				terminal_attachment 	(2265, 1097))
+			    (object RoleView "$UNNAMED$23" @26
+				Parent_View 	@24
+				location   	(440, -578)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557106E8030A"
+				client     	@24
+				supplier   	@4
+				line_style 	3
+				origin_attachment 	(2265, 1432)
+				terminal_attachment 	(2265, 1767))))
+		    (object AssociationViewNew "$UNNAMED$24" @27
+			location   	(2750, 1668)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"557106EB009E"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$25" @28
+				Parent_View 	@27
+				location   	(258, 440)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557106EB0170"
+				client     	@27
+				supplier   	@20
+				line_style 	3
+				origin_attachment 	(2750, 1668)
+				terminal_attachment 	(2750, 1098))
+			    (object RoleView "$UNNAMED$26" @29
+				Parent_View 	@27
+				location   	(258, 440)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557106EB017A"
+				client     	@27
+				supplier   	@3
+				vertices   	(list Points
+				    (2750, 1668)
+				    (2750, 2216)
+				    (2772, 2216))
+				line_style 	3
+				origin_attachment 	(2750, 1668)
+				terminal_attachment 	(2772, 2216))))
+		    (object AssociationViewNew "$UNNAMED$48" @30
+			location   	(3779, 1103)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"557107B200EE"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$49" @31
+				Parent_View 	@30
+				location   	(699, -874)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557107B300EE"
+				client     	@30
+				supplier   	@20
+				vertices   	(list Points
+				    (3779, 1103)
+				    (3779, 665)
+				    (3307, 665))
+				line_style 	3
+				origin_attachment 	(3779, 1103)
+				terminal_attachment 	(3307, 665))
+			    (object RoleView "$UNNAMED$50" @32
+				Parent_View 	@30
+				location   	(699, -874)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557107B300F8"
+				client     	@30
+				supplier   	@5
+				line_style 	3
+				origin_attachment 	(3779, 1103)
+				terminal_attachment 	(3779, 2013))))
+		    (object AssociationViewNew "$UNNAMED$51" @33
+			location   	(1671, 981)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5571085A028B"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$52" @34
+				Parent_View 	@33
+				location   	(460, 8)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5571085B0029"
+				client     	@33
+				supplier   	@20
+				line_style 	3
+				origin_attachment 	(1671, 981)
+				terminal_attachment 	(1949, 981))
+			    (object RoleView "$UNNAMED$53" @35
+				Parent_View 	@33
+				location   	(460, 8)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5571085B0033"
+				client     	@33
+				supplier   	@6
+				line_style 	3
+				origin_attachment 	(1671, 981)
+				terminal_attachment 	(1394, 981))))
+		    (object AssociationViewNew "$UNNAMED$54" @36
+			location   	(1714, 483)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"55710871013C"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$55" @37
+				Parent_View 	@36
+				location   	(249, -1347)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557108720312"
+				client     	@36
+				supplier   	@20
+				line_style 	3
+				origin_attachment 	(1714, 483)
+				terminal_attachment 	(1949, 483))
+			    (object RoleView "$UNNAMED$56" @38
+				Parent_View 	@36
+				location   	(249, -1347)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557108720326"
+				client     	@36
+				supplier   	@8
+				vertices   	(list Points
+				    (1714, 483)
+				    (1500, 483)
+				    (1500, 462))
+				line_style 	3
+				origin_attachment 	(1714, 483)
+				terminal_attachment 	(1500, 462))))
+		    (object AssociationViewNew "$UNNAMED$18" @39
+			location   	(2331, 2298)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"557106E300DA"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$19" @40
+				Parent_View 	@39
+				location   	(1131, 642)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557106E40102"
+				client     	@39
+				supplier   	@20
+				vertices   	(list Points
+				    (2331, 2298)
+				    (2632, 2298)
+				    (2632, 1098))
+				line_style 	3
+				origin_attachment 	(2331, 2298)
+				terminal_attachment 	(2632, 1098))
+			    (object RoleView "$UNNAMED$20" @41
+				Parent_View 	@39
+				location   	(1131, 642)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557106E4010C"
+				client     	@39
+				supplier   	@7
+				line_style 	3
+				origin_attachment 	(2331, 2298)
+				terminal_attachment 	(830, 2298))))
+		    (object AssociationViewNew "$UNNAMED$66" @42
+			location   	(1378, 515)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"557110EB03DF"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$67" @43
+				Parent_View 	@42
+				location   	(-1254, -146)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557110ED03C5"
+				client     	@42
+				supplier   	@12
+				line_style 	3
+				origin_attachment 	(1378, 515)
+				terminal_attachment 	(808, 515))
+			    (object RoleView "$UNNAMED$68" @44
+				Parent_View 	@42
+				location   	(-1254, -146)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557110ED03D3"
+				client     	@42
+				supplier   	@20
+				line_style 	3
+				origin_attachment 	(1378, 515)
+				terminal_attachment 	(1949, 515))))
+		    (object ClassView "Class" "œ‘ æ¬ﬂº≠::Enemy" @45
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(603, 1719)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@45
+			    location   	(359, 1492)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	488
+			    justify    	0
+			    label      	"Enemy")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5570F89D00F7"
+			compartment 	(object Compartment
+			    Parent_View 	@45
+			    location   	(359, 1551)
+			    font       	(object Font
+				size       	10
+				face       	"ÀŒÃÂ"
+				charSet    	134
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	3947580
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	9
+			    max_width  	412)
+			width      	506
+			height     	478
+			annotation 	8
+			autoResize 	TRUE)
+		    (object InheritView "" @46
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5570FF440301"
+			client     	@45
+			supplier   	@1
+			line_style 	3
+			origin_attachment 	(538, 1479)
+			terminal_attachment 	(538, 1161))
+		    (object AssociationViewNew "$UNNAMED$30" @47
+			location   	(532, 2073)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"557107040328"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$31" @48
+				Parent_View 	@47
+				location   	(-1459, 91)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55710705003A"
+				client     	@47
+				supplier   	@45
+				line_style 	3
+				origin_attachment 	(532, 2073)
+				terminal_attachment 	(532, 1958))
+			    (object RoleView "$UNNAMED$32" @49
+				Parent_View 	@47
+				location   	(-1459, 91)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557107050044"
+				client     	@47
+				supplier   	@7
+				line_style 	3
+				origin_attachment 	(532, 2073)
+				terminal_attachment 	(532, 2189))))
+		    (object AssociationViewNew "$UNNAMED$60" @50
+			location   	(706, 695)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5571088702D6"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$61" @51
+				Parent_View 	@50
+				location   	(-662, 171)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557108890182"
+				client     	@50
+				supplier   	@45
+				line_style 	3
+				origin_attachment 	(706, 695)
+				terminal_attachment 	(706, 1480))
+			    (object RoleView "$UNNAMED$62" @52
+				Parent_View 	@50
+				location   	(-662, 171)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55710889018D"
+				client     	@50
+				supplier   	@8
+				vertices   	(list Points
+				    (706, 695)
+				    (706, 408)
+				    (1205, 408))
+				line_style 	3
+				origin_attachment 	(706, 695)
+				terminal_attachment 	(1205, 408))))
+		    (object AssociationViewNew "$UNNAMED$69" @53
+			location   	(1682, 1514)
+			font       	(object Font
+			    size       	12
+			    face       	"ÀŒÃÂ"
+			    charSet    	134
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	3947580
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"557110F500C2"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$70" @54
+				Parent_View 	@53
+				location   	(-946, 853)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557110F801A6"
+				client     	@53
+				supplier   	@45
+				line_style 	3
+				origin_attachment 	(1682, 1514)
+				terminal_attachment 	(856, 1514))
+			    (object RoleView "$UNNAMED$71" @55
+				Parent_View 	@53
+				location   	(-946, 853)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"557110F801B4"
+				client     	@53
+				supplier   	@20
+				vertices   	(list Points
+				    (1682, 1514)
+				    (2092, 1514)
+				    (2092, 1098))
+				line_style 	3
+				origin_attachment 	(1682, 1514)
+				terminal_attachment 	(2092, 1098))))))))
+    root_subsystem 	(object SubSystem "œ‘ æ◊È≥…"
+	quid       	"5570F7FB00C7"
+	physical_models 	(list unit_reference_list)
+	physical_presentations 	(list unit_reference_list
+	    (object Module_Diagram "Main"
+		quid       	"5570F7FB0146"
+		title      	"Main"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    process_structure 	(object Processes
+	quid       	"5570F7FB00C8"
+	ProcsNDevs 	(list
+	    (object Process_Diagram "Deployment View"
+		quid       	"5570F7FB00CA"
+		title      	"Deployment View"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	0
+		origin_y   	0
+		items      	(list diagram_item_list))))
+    properties 	(object Properties
+	quid       	"5570F7FB00C9"))

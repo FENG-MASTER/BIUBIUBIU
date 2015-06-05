@@ -16,12 +16,12 @@ class Player :public Plane
         int getScore();
         void clearScore();
 
-        void addLife(int num);
         bool dead();
         void init();
-        bool isFiring=false;
+
         void setfireDensity(int de);
         int lifeTime=3;
+        int ATK=5;
 
     protected:
     private:

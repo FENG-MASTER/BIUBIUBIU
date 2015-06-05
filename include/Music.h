@@ -9,6 +9,7 @@ class Music
         virtual ~Music();
 
         static sf::Music MUSIC_BGM;//背景音乐
+        static sf::Music MUSIC_LOAD;
         static sf::Music SOUND_BOOM;
         static sf::Music SOUND_FIRE;
         static void load();
