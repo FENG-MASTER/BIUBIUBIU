@@ -32,6 +32,7 @@ class Sky :public sf::Sprite
         void setEnemySpeed(int speed);
         void setEnemyFireRate(double rate);
         void setEnemyBulletSpeed(int speed);
+        void createBoss(int level);
 
 
         void itemMoveAndCheak();

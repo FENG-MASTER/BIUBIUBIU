@@ -15,6 +15,8 @@ sf::Texture GTexture::ITEM_RAND;
 sf::Texture GTexture::ITEM_ATK;
 sf::Texture GTexture::LOADING;
 sf::Texture GTexture::ENEMY_2;
+sf::Texture GTexture::BULLET_BOSS;
+sf::Texture GTexture::ENEMY_BOSS;
 sf::Image GTexture::ICO;
 GTexture::GTexture()
 {
@@ -39,6 +41,7 @@ void GTexture::load(){
     LOADING.loadFromFile("E:\\programmer\\BIUBIU\\res\\LOADING.png");
     ENEMY_2.loadFromFile("E:\\programmer\\BIUBIU\\res\\plane_2.png",sf::IntRect(276,473,103,74));
     ICO.loadFromFile("E:\\programmer\\BIUBIU\\res\\ICO.png");
-
+    ENEMY_BOSS.loadFromFile("E:\\programmer\\BIUBIU\\res\\BOSS.png");
+    BULLET_BOSS.loadFromFile("E:\\programmer\\BIUBIU\\res\\bullet.png",sf::IntRect(365,439,42,90));
 
 }

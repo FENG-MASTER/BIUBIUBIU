@@ -264,6 +264,10 @@ bool Game::cheakNextMission(){
                             this->sky->setEnemySpeed(Mission::listOfMission[MissionOfNow].enemySpeed);
                             this->sky->setEnemyFireRate(Mission::listOfMission[MissionOfNow].enemyFireRate);
                             this->sky->setEnemyBulletSpeed(Mission::listOfMission[MissionOfNow].enemyBulletSpeed);
+                            if(MissionOfNow>1){
+                                this->sky->createBoss(MissionOfNow);
+                            }
+
                             MissionOfNow++;
                             std::cout<<MissionOfNow;
 

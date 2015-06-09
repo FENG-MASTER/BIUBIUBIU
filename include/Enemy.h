@@ -21,9 +21,6 @@ class Enemy :public Plane
 
 
     protected:
-    private:
-
-
 
         int fireRate;
         int Score;
@@ -31,6 +28,12 @@ class Enemy :public Plane
         int *_num;
         char direction;//敌机当前随机运动方向
         double rateOfFire=0.5;//
+
+    private:
+
+
+
+
 
 };
 

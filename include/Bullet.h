@@ -12,6 +12,7 @@ class Bullet:public flyingObject
         int ATK=10;
     protected:
     private:
+
         double speed=25.0;//初始子弹速度
         sf::Texture texture;
 

@@ -19,10 +19,11 @@ class GTexture
         static sf::Texture ENEMY_NORMAL;
         static sf::Texture ENEMY_BOOM1;
         static sf::Texture ENEMY_2;
-
+        static sf::Texture ENEMY_BOSS;
 
         static sf::Texture BULLET;
         static sf::Texture BULLET2;
+        static sf::Texture BULLET_BOSS;
 
         static sf::Texture ITEM_HEALTH;
         static sf::Texture ITEM_SPEED;

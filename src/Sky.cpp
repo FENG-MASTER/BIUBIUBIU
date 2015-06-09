@@ -2,7 +2,7 @@
 #include<Player.h>
 #include<iostream>
 #include<Enemy.h>
-
+#include<Boss.h>
 Sky::Sky(sf::RenderWindow *window)
 {
     this->window=window;
@@ -192,6 +192,13 @@ void Sky::createEnemies(){
         this->planes.insert(enemy2);
         count = 0;
     }
+
+
+
+
+
+
+
 }
 
 void Sky::enemyRandFire(){
@@ -205,7 +212,7 @@ void Sky::enemyRandFire(){
 
 }
 bool Sky::isEnd(){
-
+return false;
     if(loading){
         return false;
     }
@@ -303,6 +310,17 @@ void Sky::clearEverything(){
     planes.clear();
     items.clear();
 }
+void Sky::createBoss(int level){
+        Boss* boss = new Boss(this,10);
+        boss->setSpeed(level);
+
+        this->planes.insert(boss);
+
+
+}
+
+
+
  void Sky::setEnemyCreateRate(int rate){
     this->createRate=rate;
 

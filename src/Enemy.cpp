@@ -14,7 +14,7 @@ Enemy::Enemy(Sky* ownSky,int Score):Plane(ownSky)
 
     }else{
 
-     this->setTexture(GTexture::ENEMY_NORMAL);
+        this->setTexture(GTexture::ENEMY_NORMAL);
     }
 
     this->setFireSpeed(10);

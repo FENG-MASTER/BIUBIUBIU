@@ -11,6 +11,7 @@ class flyingObject :public sf::Sprite
         void setSpeed(int speed);
         int getSpeed();
     protected:
+        sf::Vector2<int> direction; //方向向量,默认向下
         int speed=5;
     private:
 };

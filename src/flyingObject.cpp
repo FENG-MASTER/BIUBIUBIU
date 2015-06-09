@@ -3,6 +3,8 @@
 flyingObject::flyingObject()
 {
     //ctor
+    direction.x=0;
+    direction.y=1;
 }
 
 flyingObject::~flyingObject()
@@ -10,6 +12,9 @@ flyingObject::~flyingObject()
     //dtor
 }
 void flyingObject::move(char direction){
+
+
+
   if(direction=='A'||direction=='a'){
         this->setPosition(this->getPosition().x-this->speed,this->getPosition().y);
 
