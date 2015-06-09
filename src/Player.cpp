@@ -28,8 +28,8 @@ void Player::fire(){
     static int i=0;
     if(i>this->fireDensity){
         FIRE.play();
-        Bullet *bulletL=new Bullet(GTexture::BULLET2,this->ATK);
-        Bullet *bulletR=new Bullet(GTexture::BULLET2,this->ATK);
+        Bullet *bulletL=new Bullet(GTexture::BULLET2,this->ATK,sf::Vector2<float>(0.0,-1.0));
+        Bullet *bulletR=new Bullet(GTexture::BULLET2,this->ATK,sf::Vector2<float>(0.0,-1.0));
         bulletL->setSpeed(this->fireSpeed);
         bulletR->setSpeed(this->fireSpeed);
         bulletL->setScale(0.5,0.5);

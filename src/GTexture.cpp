@@ -5,6 +5,7 @@
 
 sf::Texture GTexture::SKY;
 sf::Texture GTexture::PLAYER_NORMAL;
+sf::Texture GTexture::PLAYER_NULL;
 sf::Texture GTexture::BULLET;
 sf::Texture GTexture::BULLET2;
 sf::Texture GTexture::ENEMY_NORMAL;
@@ -43,5 +44,5 @@ void GTexture::load(){
     ICO.loadFromFile("E:\\programmer\\BIUBIU\\res\\ICO.png");
     ENEMY_BOSS.loadFromFile("E:\\programmer\\BIUBIU\\res\\BOSS.png");
     BULLET_BOSS.loadFromFile("E:\\programmer\\BIUBIU\\res\\bullet.png",sf::IntRect(365,439,42,90));
-
+    PLAYER_NULL.loadFromFile("E:\\programmer\\BIUBIU\\res\\NULL.png");
 }

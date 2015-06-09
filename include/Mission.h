@@ -9,9 +9,9 @@ typedef struct SMission
     int playerDulletSpeed;
     int playerFireSpeed;
     int enemyCreateRate;
-    int enemySpeed;
+    double enemySpeed;
     double enemyFireRate;
-    int enemyBulletSpeed;
+    double enemyBulletSpeed;
 
 
 }SMission;

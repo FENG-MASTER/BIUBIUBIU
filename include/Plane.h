@@ -12,14 +12,14 @@ class Plane:public flyingObject
         Plane(Sky* ownSky);
         virtual ~Plane();
 
-        void setFireSpeed(int speed);
+        void setFireSpeed(double speed);
         virtual void fire();//¿ª»ð
 
 
     protected:
          Sky* ownSky;
 
-         int fireSpeed=2;
+         double fireSpeed=2;
         sf::Texture texture;  //·É»úÎÆÀí
         sf::Music &BOOM=Music::SOUND_BOOM; //·É»ú±¬Õ¨ÉùÒô
         sf::Texture BOOMTEXTURE=GTexture::ENEMY_BOOM1;//·É»ú±¬Õ¨ÌùÍ¼

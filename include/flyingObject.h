@@ -7,12 +7,13 @@ class flyingObject :public sf::Sprite
     public:
         flyingObject();
         virtual ~flyingObject();
-        void move(char direction);
-        void setSpeed(int speed);
+        void move(sf::Vector2<float> direction);
+        void move();
+        void setSpeed(double speed);
         int getSpeed();
     protected:
-        sf::Vector2<int> direction; //方向向量,默认向下
-        int speed=5;
+        sf::Vector2<float> direction; //方向向量,默认向下
+        double speed=1;
     private:
 };
 

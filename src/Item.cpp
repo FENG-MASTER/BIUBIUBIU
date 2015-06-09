@@ -60,19 +60,19 @@ void Item::moveRand(){
             switch((*ren)%5){
 
             case 0:
-                direction='D';
+                direction=sf::Vector2<float>(1.0,0);
                 break;
             case 1:
-                direction='A';
+                direction=sf::Vector2<float>(-1.0,0);
                  break;
             case 2:
-                direction='S';
+                direction=sf::Vector2<float>(0,1);
                 break;
             case 3:
-                direction='S';
+                direction=sf::Vector2<float>(0,1);
                 break;
             case 4:
-                direction='S';
+                direction=sf::Vector2<float>(0,1);
                 break;
 
             }

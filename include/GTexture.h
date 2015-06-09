@@ -15,6 +15,7 @@ class GTexture
         static sf::Texture PLAYER_BOOM1;
         static sf::Texture PLAYER_BOOM2;
         static sf::Texture PLAYER_BOOM3;
+        static sf::Texture PLAYER_NULL;
 
         static sf::Texture ENEMY_NORMAL;
         static sf::Texture ENEMY_BOOM1;

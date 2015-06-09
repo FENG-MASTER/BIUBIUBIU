@@ -60,18 +60,16 @@ void Sky::refresh(){
         }
 
         (*enemy)->moveRand();
-        if((*enemy)->getPosition().x<-6){
-            (*enemy)->setPosition(570,(*enemy)->getPosition().y);
 
-        }else if((*enemy)->getPosition().x>580){
-            (*enemy)->setPosition(-1,(*enemy)->getPosition().y);
-        }else if((*enemy)->getPosition().y>700){
+        if((*enemy)->checkBorder(600,800)){
+
             delete *enemy;
            enemy = (this->planes).erase(enemy);
+
            break;
+
+
         }
-
-
 
 
 
@@ -153,11 +151,11 @@ void Sky::addBullet(Bullet* bullet,int flat){
 void Sky::moveBullet(){
 
     for(auto &bullet : this->bullets){
-        bullet->move('W');
+        bullet->move();
     }
      for(auto &bullet : this->enemyBullets){
 
-        bullet->move('S');
+        bullet->move();
     }
 
 }
@@ -212,7 +210,28 @@ void Sky::enemyRandFire(){
 
 }
 bool Sky::isEnd(){
-return false;
+    if((--this->player->noEnemyCanFight)>0){
+           static bool f=true;
+
+            if(f){
+                this->player->setTexture(GTexture::PLAYER_NULL);
+                f=0;
+
+
+            }else{
+
+                this->player->setTexture(GTexture::PLAYER_NORMAL);
+                f=1;
+
+            }
+
+
+
+        return false;
+
+
+    }
+//return false;
     if(loading){
         return false;
     }
@@ -288,31 +307,32 @@ void Sky::itemMoveAndCheak(){
 }
 
 
-void Sky::clearEverything(){
+void Sky::clearEverything(bool flat){
 
     for(auto &bullet : this->enemyBullets){
         delete bullet;
 
     }
-    for(auto &enemy : this->planes){
-        delete enemy;
-    }
+
     for(auto &item : this->items){
         delete item;
     }
 
 
-
-
-
+        if(flat){
+          for(auto &enemy : this->planes){
+                delete enemy;
+            }
+            planes.clear();
+        }
     enemyBullets.clear();
     bullets.clear();
-    planes.clear();
+
     items.clear();
 }
 void Sky::createBoss(int level){
-        Boss* boss = new Boss(this,10);
-        boss->setSpeed(level);
+
+        Boss* boss = new Boss(this,10,level);
 
         this->planes.insert(boss);
 
@@ -325,7 +345,7 @@ void Sky::createBoss(int level){
     this->createRate=rate;
 
  }
-void Sky::setEnemySpeed(int speed){
+void Sky::setEnemySpeed(double speed){
     this->enemySpeed=speed;
 
 }
@@ -333,7 +353,8 @@ void Sky::setEnemyFireRate(double rate){
     this->enemyFireRate=rate;
 
 }
-void Sky::setEnemyBulletSpeed(int speed){
+void Sky::setEnemyBulletSpeed(double speed){
     this->enemyBulletSpeed=speed;
 
 }
+

@@ -22,7 +22,7 @@ class Player :public Plane
         void setfireDensity(int de);
         int lifeTime=3;
         int ATK=5;
-
+        int noEnemyCanFight=-1;
     protected:
     private:
         int fireDensity=15;

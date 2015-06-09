@@ -37,14 +37,18 @@ void Game::start(){
 	// Process events
 
 	sf::Event event;
+	if(this->sky->loading){
 
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return)){
-        this->sky->loading=false;
-        this->init();
-        this->LOAD_BGM.stop();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return)){
+            this->sky->loading=false;
+            this->init();
+            this->LOAD_BGM.stop();
 
+
+        }
 
 	}
+
 
 
 	if(gameOverFlat==1){
@@ -60,7 +64,7 @@ void Game::start(){
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
                     //向左
                     if(this->sky->player->getPosition().x>0){
-                        sky->player->move('A');
+                        sky->player->move(sf::Vector2<float>(-1.0,0.0));
 
                     }
 
@@ -71,7 +75,7 @@ void Game::start(){
                     //向右
 
                     if(this->sky->player->getPosition().x<this->sky->getTextureRect().width-170){
-                        sky->player->move('D');
+                        sky->player->move(sf::Vector2<float>(1.0,0.0));
                     }
                 }
 
@@ -80,7 +84,7 @@ void Game::start(){
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) ){
                     //向左
                     if(this->sky->player->getPosition().y>0){
-                        sky->player->move('W');
+                        sky->player->move(sf::Vector2<float>(0.0,-1.0));
 
                     }
 
@@ -92,7 +96,7 @@ void Game::start(){
                     //向右
 
                     if(this->sky->player->getPosition().y<(this->sky->window->getSize().y-this->sky->player->getGlobalBounds().height)){
-                        sky->player->move('S');
+                        sky->player->move(sf::Vector2<float>(0.0,1.0));
                     }
                 }
                 if (sf::Keyboard::isKeyPressed( sf::Keyboard::Space)) {
@@ -146,13 +150,14 @@ void Game::start(){
                         gameOverFlat=1;
                         stopMusic();
                         sky->player->setPosition(START_X,START_Y);
-                        sky->clearEverything();
+                        sky->clearEverything(true);
 
                         sky->window->clear();
                         continue;
                     }
+                    this->sky->player->noEnemyCanFight=501;
                     sky->player->setPosition(START_X,START_Y);
-                    sky->clearEverything();
+                    sky->clearEverything(false);
 
 
                 }
@@ -234,7 +239,7 @@ void Game::init(){
     waitingForReset=0;
     MissionOfNow=0;
     sky->player->setPosition(START_X,START_Y);
-    sky->clearEverything();
+    sky->clearEverything(true);
     sky->window->clear();
     sky->player->init();
     playMusic();
@@ -250,7 +255,7 @@ bool Game::cheakNextMission(){
                     gameOverFlat=1;
                     stopMusic();
                     sky->player->setPosition(START_X,START_Y);
-                    sky->clearEverything();
+                    sky->clearEverything(true);
                     sky->window->clear();
                     return false;
 
@@ -264,11 +269,11 @@ bool Game::cheakNextMission(){
                             this->sky->setEnemySpeed(Mission::listOfMission[MissionOfNow].enemySpeed);
                             this->sky->setEnemyFireRate(Mission::listOfMission[MissionOfNow].enemyFireRate);
                             this->sky->setEnemyBulletSpeed(Mission::listOfMission[MissionOfNow].enemyBulletSpeed);
+                            MissionOfNow++;
                             if(MissionOfNow>1){
+
                                 this->sky->createBoss(MissionOfNow);
                             }
-
-                            MissionOfNow++;
                             std::cout<<MissionOfNow;
 
                     }

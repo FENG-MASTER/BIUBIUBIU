@@ -3,36 +3,43 @@
 flyingObject::flyingObject()
 {
     //ctor
-    direction.x=0;
-    direction.y=1;
+    direction.x=0.0;
+    direction.y=1.0;
 }
 
 flyingObject::~flyingObject()
 {
     //dtor
 }
-void flyingObject::move(char direction){
+void flyingObject::move(sf::Vector2<float> direction){
+
+    this->direction=direction;
+    sf::Vector2<float> temp = this->direction;
+    temp.x=this->direction.x*speed;
+    temp.y=this->direction.y*speed;
+    this->setPosition(this->getPosition()+temp);
 
 
-
-  if(direction=='A'||direction=='a'){
-        this->setPosition(this->getPosition().x-this->speed,this->getPosition().y);
-
-    }else if(direction=='D'||direction=='d'){
-        this->setPosition(this->getPosition().x+this->speed,this->getPosition().y);
-    }else if(direction=='S'||direction=='s'){
-        this->setPosition(this->getPosition().x,this->getPosition().y+this->speed);
-
-    }else if(direction=='W'||direction=='w'){
-        this->setPosition(this->getPosition().x,this->getPosition().y-this->speed);
-
-    }
 
 
 }
+
+
+void flyingObject::move(){
+
+
+    sf::Vector2<float> temp = this->direction;
+    temp.x=this->direction.x*speed;
+    temp.y=this->direction.y*speed;
+    this->setPosition(this->getPosition()+temp);
+
+
+
+}
+
 int flyingObject::getSpeed(){
     return this->speed;
 }
-void flyingObject::setSpeed(int speed){
+void flyingObject::setSpeed(double speed){
     this->speed=speed;
 }

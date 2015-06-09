@@ -27,11 +27,11 @@ class Sky :public sf::Sprite
 
         void enemyRandFire();
         bool isEnd();
-        void clearEverything();
+        void clearEverything(bool flat);
         void setEnemyCreateRate(int rate);
-        void setEnemySpeed(int speed);
+        void setEnemySpeed(double speed);
         void setEnemyFireRate(double rate);
-        void setEnemyBulletSpeed(int speed);
+        void setEnemyBulletSpeed(double speed);
         void createBoss(int level);
 
 
@@ -44,12 +44,13 @@ class Sky :public sf::Sprite
 
     protected:
     private:
+
         void createItems(int x,int y);
         sf::Texture texture=GTexture::SKY;//天空纹理
         int createRate=100;//越大生成速率越低
-        int enemySpeed=2;
+        double enemySpeed=2;
         double enemyFireRate=0.5;
-        int enemyBulletSpeed=13;
+        double enemyBulletSpeed=13;
 
 
 

@@ -22,7 +22,7 @@ class Item :public flyingObject
     private:
         int num=1;//这个变量简单说是用来处理的运行状态的, 判断啊是否达到换方向运动的变量
         int *_num;
-        char direction;//当前随机运动方向
+        sf::Vector2<float> direction;//当前随机运动方向
 
 
         sf::Texture * textureRand;

@@ -22,7 +22,7 @@ void Plane::fire(){
 
 
 
-void Plane::setFireSpeed(int speed){
+void Plane::setFireSpeed(double speed){
     this->fireSpeed=speed;
 }
 

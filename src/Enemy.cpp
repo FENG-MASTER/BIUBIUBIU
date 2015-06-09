@@ -49,19 +49,19 @@ void Enemy::moveRand(){
             switch((*ren)%5){
 
             case 0:
-                direction='D';
+                direction=sf::Vector2<float>(1.0,0);
                 break;
             case 1:
-                direction='A';
+                direction=sf::Vector2<float>(-1.0,0);
                  break;
             case 2:
-                direction='S';
+                direction=sf::Vector2<float>(0,1);
                 break;
             case 3:
-                direction='S';
+                direction=sf::Vector2<float>(0,1);
                 break;
             case 4:
-                direction='S';
+                direction=sf::Vector2<float>(0,1);
                 break;
 
             }
@@ -149,6 +149,21 @@ void Enemy::fire(){
 }
 void Enemy::setFireRate(double rate){
     this->rateOfFire=rate;
+
+
+}
+bool Enemy::checkBorder(int w,int h){
+
+        if(this->getPosition().x<-6){
+            this->setPosition(w,this->getPosition().y);
+            return false;
+        }else if(this->getPosition().x>w){
+            this->setPosition(-1,this->getPosition().y);
+            return false;
+        }else if(this->getPosition().y>h-80){
+            return true;
+        }
+
 
 
 }
