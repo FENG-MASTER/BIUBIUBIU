@@ -90,7 +90,6 @@ void Sky::refresh(){
 
                         this->bullets.erase(sprite);//×Óµ¯ÏûÊ§
 
-
                         break;
 
                 }
@@ -170,7 +169,7 @@ void Sky::clearBullet(){
             bullet = (this->bullets).erase(bullet);
 
         }else{
-        bullet++;
+            bullet++;
         }
 
     }
@@ -179,17 +178,26 @@ void Sky::clearBullet(){
 
 void Sky::createEnemies(){
 
-    static int count=0;
+    if(!bossMission){
+         static int count=0;
 
-    if(++count>=createRate){
-        Enemy* enemy1 = new Enemy(this,10);
-        Enemy* enemy2 = new Enemy(this,10);
-        enemy1->setSpeed(enemySpeed);
-        enemy2->setSpeed(enemySpeed);
-        this->planes.insert(enemy1);
-        this->planes.insert(enemy2);
-        count = 0;
+        if(++count>=createRate){
+            Enemy* enemy1 = new Enemy(this,10);
+            Enemy* enemy2 = new Enemy(this,10);
+            enemy1->setSpeed(enemySpeed);
+            enemy2->setSpeed(enemySpeed);
+            this->planes.insert(enemy1);
+            this->planes.insert(enemy2);
+            count = 0;
     }
+
+
+    }else{
+
+        return;
+    }
+
+
 
 
 
@@ -210,6 +218,8 @@ void Sky::enemyRandFire(){
 
 }
 bool Sky::isEnd(){
+
+  //  return false;
     if((--this->player->noEnemyCanFight)>0){
            static bool f=true;
 
@@ -231,7 +241,7 @@ bool Sky::isEnd(){
 
 
     }
-//return false;
+
     if(loading){
         return false;
     }
@@ -358,3 +368,7 @@ void Sky::setEnemyBulletSpeed(double speed){
 
 }
 
+int& Sky::getScore(){
+    return this->player->score;
+
+}

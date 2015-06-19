@@ -30,12 +30,15 @@ class GTexture
         static sf::Texture ITEM_SPEED;
         static sf::Texture ITEM_RAND;
         static sf::Texture ITEM_ATK;
+        static sf::Texture ITEM_BUTTET_SPEED;
 
         static sf::Texture SKY;
+        static sf::Texture SKY_BOOM;
         static sf::Image ICO;
 
 
         static sf::Texture LOADING;
+
 
 
         static void load();

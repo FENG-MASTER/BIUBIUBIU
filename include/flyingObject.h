@@ -10,7 +10,7 @@ class flyingObject :public sf::Sprite
         void move(sf::Vector2<float> direction);
         void move();
         void setSpeed(double speed);
-        int getSpeed();
+        double getSpeed();
     protected:
         sf::Vector2<float> direction; //方向向量,默认向下
         double speed=1;

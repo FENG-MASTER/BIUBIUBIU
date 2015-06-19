@@ -5,10 +5,11 @@
 #define INIT_SPEED 10
 #define INIT_X 200
 #define INIT_Y 680
+#define LIMIT_FIRE_SPEED 7
 Player::Player(Sky* ownSky):Plane(ownSky)
 {
     this->setTexture(this->texture);
-    this->setScale(0.4,0.4);
+    this->setScale(0.3,0.3);
     this->setPosition(INIT_X,INIT_Y);
     this->setSpeed(INIT_SPEED);
     this->setFireSpeed(15);
@@ -82,6 +83,17 @@ void Player::init(){
 }
 
 void Player::setfireDensity(int de){
-    this->fireDensity=de;
+    if(de<LIMIT_FIRE_SPEED){
+        return ;
+
+    }else{
+        this->fireDensity=de;
+    }
+
+
+}
+
+int Player::getfireDensity(){
+    return fireDensity;
 
 }

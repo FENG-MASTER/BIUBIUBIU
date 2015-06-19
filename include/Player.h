@@ -19,13 +19,16 @@ class Player :public Plane
         bool dead();
         void init();
 
-        void setfireDensity(int de);
+        void setfireDensity(int de);//这里会处理下边界,不允许太低
+        int getfireDensity();
+
         int lifeTime=3;
         int ATK=5;
         int noEnemyCanFight=-1;
+friend class Sky;
     protected:
     private:
-        int fireDensity=15;
+        int fireDensity=35;
         int score=0;
 
 

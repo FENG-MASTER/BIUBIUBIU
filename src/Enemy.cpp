@@ -6,6 +6,7 @@
 Enemy::Enemy(Sky* ownSky,int Score):Plane(ownSky)
 {
     _num =new int;
+    this->setScale(0.8,0.8);
     this->Score=Score;
     int *rendd=new int;
     this->fireRate=INIT_FIRERATE;

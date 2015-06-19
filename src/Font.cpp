@@ -11,8 +11,8 @@ Font::~Font()
     //dtor
 }
 void Font::load(){
-    Font_DEAD.loadFromFile("C:\\Windows\\Fonts\\ARLRDBD.TTF");
-    Font_Score.loadFromFile("C:\\Windows\\Fonts\\BAUHS93.TTF");
+    Font_DEAD.loadFromFile("C:\\Windows\\Fonts\\simsun.ttc");
+    Font_Score.loadFromFile("C:\\Windows\\Fonts\\simsun.ttc");
 
 
 }

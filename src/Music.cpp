@@ -20,10 +20,10 @@ Music::~Music()
 }
 
 void Music::load(){
-    MUSIC_BGM.openFromFile("E:\\programmer\\BIUBIU\\res\\BGM1.flac");
-    SOUND_BOOM.openFromFile("E:\\programmer\\BIUBIU\\res\\BOOM.wav");
-    SOUND_FIRE.openFromFile("E:\\programmer\\BIUBIU\\res\\FIRE.ogg");
-    MUSIC_LOAD.openFromFile("E:\\programmer\\BIUBIU\\res\\LOADING.flac");
+    MUSIC_BGM.openFromFile("res\\BGM1.flac");
+    SOUND_BOOM.openFromFile("res\\BOOM.wav");
+    SOUND_FIRE.openFromFile("res\\FIRE.ogg");
+    MUSIC_LOAD.openFromFile("res\\LOADING.flac");
     SOUND_FIRE.setVolume(FIREVOLUM);
     SOUND_BOOM.setVolume(BOOMVOLUM);
 }

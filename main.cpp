@@ -1,6 +1,7 @@
+
+#include <SFML/Main.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-#include <SFML/Main.hpp>
 #include<GTexture.h>
 #include<Sky.h>
 #include<Player.h>
@@ -9,7 +10,7 @@
 #include<Font.h>
 #include<Mission.h>
 int main(){
-sf::RenderWindow window(sf::VideoMode(600, 800), "BIUBIU  enjoy yourself",sf::Style::Close );
+sf::RenderWindow window(sf::VideoMode(600, 800), "BIUBIU  enjoy yourself");
 
     Music::load();//音乐初始化
     GTexture::load();//纹理初始化

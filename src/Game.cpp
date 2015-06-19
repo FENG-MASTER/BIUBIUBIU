@@ -6,7 +6,7 @@
 #define START_Y 680
 #include<Font.h>
 #include<Mission.h>
-
+#include<Skill.h>
 
 Game::Game(Sky *sky)
 {
@@ -32,6 +32,7 @@ Game::~Game()
 void Game::start(){
 
     this->playMusic();
+     Skill *skill=new Skill(sky);
     while (sky->window->isOpen()){
     //程序最核心代码
 	// Process events
@@ -63,6 +64,7 @@ void Game::start(){
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
                     //向左
+
                     if(this->sky->player->getPosition().x>0){
                         sky->player->move(sf::Vector2<float>(-1.0,0.0));
 
@@ -73,6 +75,7 @@ void Game::start(){
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
                     //向右
+
 
                     if(this->sky->player->getPosition().x<this->sky->getTextureRect().width-170){
                         sky->player->move(sf::Vector2<float>(1.0,0.0));
@@ -99,11 +102,23 @@ void Game::start(){
                         sky->player->move(sf::Vector2<float>(0.0,1.0));
                     }
                 }
-                if (sf::Keyboard::isKeyPressed( sf::Keyboard::Space)) {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
                                 this->sky->player->fire();
 
 
                     }
+
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
+                    if(this->sky->getScore()>100){
+                        skill->boom();
+                        this->sky->getScore();
+
+
+                    }
+
+
+
+                }
 
 
 
@@ -225,7 +240,7 @@ void Game::showGameOver(bool win){
         sprintf(str,"YOU WIN!!! \n YOUR Score:%d \n Pause F1 to replay",this->sky->player->getScore());
 
     }else{
-        sprintf(str,"YOUR ARE DEAD!!! \n YOUR Score:%d \n Pause F1 to replay",this->sky->player->getScore());
+        sprintf(str,"YOU ARE DEAD!!! \n YOUR Score:%d \n Pause F1 to replay",this->sky->player->getScore());
     }
 
     GameOver_Text.setString(str);
@@ -263,7 +278,7 @@ bool Game::cheakNextMission(){
                     if(this->sky->player->getScore()>=Mission::listOfMission[MissionOfNow].Score){
                             this->sky->player->lifeTime+=(Mission::listOfMission[MissionOfNow].addLife);
                             this->sky->player->setSpeed(this->sky->player->getSpeed()+Mission::listOfMission[MissionOfNow].PlayerSpeed);
-                            this->sky->player->setfireDensity(Mission::listOfMission[MissionOfNow].playerFireSpeed);
+                            this->sky->player->setfireDensity(this->sky->player->getfireDensity()-Mission::listOfMission[MissionOfNow].playerFireSpeed);
                             this->sky->player->setFireSpeed(Mission::listOfMission[MissionOfNow].playerDulletSpeed);
                             this->sky->setEnemyCreateRate(Mission::listOfMission[MissionOfNow].enemyCreateRate);
                             this->sky->setEnemySpeed(Mission::listOfMission[MissionOfNow].enemySpeed);

@@ -11,7 +11,7 @@ class Enemy :public Plane
         virtual ~Enemy();
        virtual void moveRand(); //随机移动
         int state=0;//敌机状态 0正常 1-4爆炸 5死亡
-        void boomByState(int state);
+       virtual void boomByState(int state);
         int getScore();
         bool fireRand();
         void fire();

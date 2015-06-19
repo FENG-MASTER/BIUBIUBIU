@@ -37,7 +37,7 @@ void flyingObject::move(){
 
 }
 
-int flyingObject::getSpeed(){
+double flyingObject::getSpeed(){
     return this->speed;
 }
 void flyingObject::setSpeed(double speed){

@@ -16,12 +16,14 @@ Item::Item(int x,int y)
 
 
     srand(time(NULL));
-    int i=abs(rand()%2);
+    int i=abs(rand()%3);
     if(i==0){
         itemsTexture=&GTexture::ITEM_HEALTH;
 
-    }else if(i==1){
+    }else if(i==2){
         itemsTexture=&GTexture::ITEM_ATK;
+    }else if(i==1){
+        itemsTexture=&GTexture::ITEM_BUTTET_SPEED;
     }
 
 
@@ -119,6 +121,9 @@ void Item::getSomething(Sky *sky){
 
     }else if(itemsTexture==&GTexture::ITEM_ATK){
             sky->player->ATK+=2;
+
+    }else if(itemsTexture==&GTexture::ITEM_BUTTET_SPEED){
+            sky->player->setfireDensity(sky->player->getfireDensity()-1);
 
     }
 
